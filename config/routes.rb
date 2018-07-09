@@ -5,6 +5,7 @@ Rails.application.routes.draw do
               :controllers => {:registrations => 'registrations' }
               
   resources :users, only: [:show]
+  resources :adventures
   
   root 'pages#home'
 end
