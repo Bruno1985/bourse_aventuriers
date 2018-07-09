@@ -13,6 +13,11 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require toastr
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+		
+toastr.options = {
+	 "positionClass": "toast-bottom-right"
+	 }
