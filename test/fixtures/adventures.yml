@@ -1,0 +1,55 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  main_activity: MyString
+  summary: MyText
+  address: MyString
+  number_of_teammates: 1
+  date_of_departure: 2018-07-09
+  duration: 1
+  is_trekking: false
+  is_trail: false
+  is_alpinism: false
+  is_climbing: false
+  is_cycling: false
+  is_alpinism: false
+  is_motorbike: false
+  is_sailing: false
+  is_camping: false
+  is_skiing: false
+  is_fishing: false
+  is_mountain_bike: MyString
+  is_kayaking: false
+  is_diving: false
+  is_dog_sledding: false
+  is_horse_riding: false
+  is_paragliding: false
+  active: false
+  user: one
+
+two:
+  main_activity: MyString
+  summary: MyText
+  address: MyString
+  number_of_teammates: 1
+  date_of_departure: 2018-07-09
+  duration: 1
+  is_trekking: false
+  is_trail: false
+  is_alpinism: false
+  is_climbing: false
+  is_cycling: false
+  is_alpinism: false
+  is_motorbike: false
+  is_sailing: false
+  is_camping: false
+  is_skiing: false
+  is_fishing: false
+  is_mountain_bike: MyString
+  is_kayaking: false
+  is_diving: false
+  is_dog_sledding: false
+  is_horse_riding: false
+  is_paragliding: false
+  active: false
+  user: two

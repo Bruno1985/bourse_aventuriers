@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_09_114854) do
+ActiveRecord::Schema.define(version: 2018_07_09_145046) do
+
+# Could not dump table "adventures" because of following StandardError
+#   Unknown type 'stringt' for column 'listing_name'
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
