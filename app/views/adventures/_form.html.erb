@@ -1,0 +1,169 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Proposer une aventure
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            
+            <%= form_for @adventure do |f| %>
+             
+            <div class="row">
+                    <div class="col-md-4 select">
+                        <div class="form-group">
+                            <label>Type d'aventure</label>
+                            <%= f.select :main_activity, [["Randonnée/Trek","Randonnée/Trek"],
+							["Trail","Trail"],
+                            ["Alpinisme","Alpinisme"],
+                            ["Escalade","Escalade"],
+                            ["Voyage à vélo","Voyage à vélo"],
+							["VTT","VTT"],
+                            ["Moto","Randonnée/Trek"],
+                            ["Randonnée/Trek","Moto"],
+                            ["Voile","Voile"],
+                            ["Ski","Ski"],
+                            ["Kayak","Kayak"],
+                            ["Chiens de traîneau","Chien de traîneau"],
+                            ["Voyage à cheval","Voyage à cheval"]],
+							id: "main_activity", 
+                            prompt: "A sélectionner...", class: "form-control" %>
+                        </div>
+                    </div>
+                
+                    <div class="col-md-4 select">
+                        <div class="form-group">
+                            <label> Nombre d'équipiers recherchés </label>
+                            <%= f.select :number_of_teammates, [["1 équipier",1], ["2 équipiers",2],
+                            ["3 équipiers", 3], ["4 équipiers",4], ["5 équipiers",5], ["6 équipiers",6]], 
+                            prompt: "A sélectionner...", class: "form-control" %>
+                        </div>
+                    </div>    
+                     
+                </div>
+				
+	            <div class="row">
+	                    <div class="col-md-4 select">
+	                        <div class="form-group">
+		                        <label>Date de départ de l'aventure</label>
+		                        <%= f.text_field :date_of_departure, placeholder: "Date de départ", class: "form-control" %>
+	                        </div>
+	                    </div>
+                
+	                    <div class="col-md-4 select">
+	                        <div class="form-group">
+                     		   <label>Combien de jours durera l'aventure ?</label>
+                   				<%= f.text_field :date_of_departure, placeholder: "Durée de l'aventure - En jours", class: "form-control" %>
+	                        </div>
+	                    </div>    
+                     
+	                </div>
+				
+				
+                
+            <div class="row">
+                    <div class="form-group">
+                        <label>Donnez un titre à l'aventure</label>
+                        <%= f.text_field :listing_name, placeholder: "Titre de l'annonce", class: "form-control" %>
+                    </div>
+                </div>
+                
+            <div class="row">
+                    <div class="form-group">
+                        <label>Résumé</label>
+                        <%= f.text_area :summary, rows:4, placeholder: "Décrivez l'aventure que vous proposez",
+                        class: "form-control" %>
+                    </div>
+                </div>
+                
+            <div class="row">
+                    <div class="form-group">
+                        <label>Lieu de l'aventure'</label>
+                        <%= f.text_field :address, placeholder: "Où se déroulera l'aventure", class: "form-control" %>
+                    </div>
+                </div>
+                
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <%= f.check_box :is_trekking %> Randonnée/Trek
+                    </div>
+                    
+                    <div class="form-group">
+                        <%= f.check_box :is_trail %> Trail
+                    </div>
+                    
+                    <div class="form-group">
+                        <%= f.check_box :is_alpinism %> Alpinisme
+                    </div>
+                    
+                    <div class="form-group">
+                        <%= f.check_box :is_climbing %> Escalade
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <%= f.check_box :is_cycling %> Vélo
+                    </div>
+                    
+                    <div class="form-group">
+                        <%= f.check_box :is_motorbike %> Moto
+                    </div>
+                    
+                    <div class="form-group">
+                        <%= f.check_box :is_sailing %> Voile
+                    </div>
+                    
+                    <div class="form-group">
+                        <%= f.check_box :is_camping %> Camping
+                    </div>
+					
+                    <div class="form-group">
+                        <%= f.check_box :is_skiing %> Ski
+                    </div>
+					
+                    <div class="form-group">
+                        <%= f.check_box :is_fishing %> Pêche
+                    </div>
+					
+                    <div class="form-group">
+                        <%= f.check_box :is_mountain_bike %> VTT
+                    </div>
+					
+                    <div class="form-group">
+                        <%= f.check_box :is_kayaking %> Kayak
+                    </div>
+					
+                    <div class="form-group">
+                        <%= f.check_box :is_diving%> Plongée
+                    </div>
+					
+                    <div class="form-group">
+                        <%= f.check_box :is_dog_sledding%> Chien de traîneau
+                    </div>
+					
+                    <div class="form-group">
+                        <%= f.check_box :is_horse_riding%> Voyage à cheval
+                    </div>
+					
+                    <div class="form-group">
+                        <%= f.check_box :is_paragliding%> Parapente
+                    </div>
+					
+
+                </div>
+            </div>
+                
+            <div class="row">
+                <div class="form-group">
+                    <%= f.check_box :active %> Annonce active
+                </div>
+            </div>
+                
+            <div class="actions">
+                      <%= f.submit "Je valide mon annonce", class: "btn btn-primary"%>
+            </div>
+            <% end %>
+            
+        </div>
+    </div>
+</div>
