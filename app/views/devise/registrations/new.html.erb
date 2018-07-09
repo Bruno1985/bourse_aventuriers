@@ -1,28 +1,33 @@
-<h2>Sign up</h2>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4 text-center">
+
+<h2>S'inscrire</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="form-group">
+	  <br/>
+    <%= f.text_field :fullname, autofocus: true, autocomplete: "fullname", class: "form-control", placeholder: "Nom complet (Prénom + Nom)" %>
+  </div>
+  
+  <div class="form-group">
+	  <br/>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder:"Votre Email" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="form-group">
+    <br/>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder:"Votre Mot de passe" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="form-group">
+	  <br/>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder:"Confirmez votre Mot de passe" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "S'inscrire", class: "btn btn-default" %>
   </div>
 <% end %>
 
