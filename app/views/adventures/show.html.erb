@@ -1,0 +1,110 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        
+        <!-- Photo principale de l'annonce -->
+        <div class="row">
+            <div class="col-md-12">
+                <%= image_tag @photos[0].image.url(), class:"img-responsive" if @photos.length >0 %>
+            </div>
+        </div>
+        
+        <br>
+        
+        <!-- Informations principales -->
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                        <%= image_tag avatar_url(@adventure.user), class:"img-circle avatar-large" %>
+                        <br>
+                        <br>
+                        <%= @adventure.user.fullname %>
+                    </div>
+                    <div class="col-md-9">
+                        <h4><%= @adventure.listing_name %></h4>
+                        <%= @adventure.address %>
+                        <div class="row text-center row-space-1">
+                            <div class="col-sm-3">
+                                <i class="fa fa-home fa-2x"></i>
+                            </div>
+                            <div class="col-sm-3">
+                                <i class="fa fa-users fa-2x"></i>
+                            </div>
+                            <div class="col-sm-3">
+                                <i class="fa fa-bed fa-2x"></i>
+                            </div>
+                            <div class="col-sm-3">
+                                <i class="fa fa-bath fa-2x"></i>
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-sm-3">
+                                <%= @adventure.main_activity %>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                
+				
+				
+				
+				<!-- Formulaire de réservation -->
+            </div>    
+        	</div>
+        
+        <!-- Description -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2>A propos de cette aventure</h2>
+                <p><%= @adventure.summary %></p>
+            </div>
+        </div>
+        
+        <!-- Activités -->
+        <div class="row">
+            <div class="col-md-2">
+                <p>Activités</p>
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="equipments">
+                            <li class="<%= 'text-line-through' if !@adventure.is_trekking %>">Randonnée/Treks</li>
+                            <li class="<%= 'text-line-through' if !@adventure.is_trail %>">Trail</li>
+                            <li class="<%= 'text-line-through' if !@adventure.is_alpinism %>">Alpinisme</li>
+                            <li class="<%= 'text-line-through' if !@adventure.is_climbing %>">Escalade</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="equipments">
+                            <li class="<%= 'text-line-through' if !@adventure.is_cycling %>">Vélo</li>
+                            <li class="<%= 'text-line-through' if !@adventure.is_motorbike %>">Moto</li>
+                            <li class="<%= 'text-line-through' if !@adventure.is_sailing %>">Voile</li>
+                            <li class="<%= 'text-line-through' if !@adventure.is_camping %>">Camping</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="equipments">
+                            <li class="<%= 'text-line-through' if !@adventure.is_fishing %>">Pêche</li>
+                            <li class="<%= 'text-line-through' if !@adventure.is_mountain_bike %>">VTT</li>
+                            <li class="<%= 'text-line-through' if !@adventure.is_kayaking %>">Kayak</li>
+                            <li class="<%= 'text-line-through' if !@adventure.is_diving %>">Plongée</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="equipments">
+                            <li class="<%= 'text-line-through' if !@adventure.is_dog_sledding %>">Chien de traîneau</li>
+                            <li class="<%= 'text-line-through' if !@adventure.is_horse_riding %>">Voyage à cheval</li>
+                            <li class="<%= 'text-line-through' if !@adventure.is_paragliding %>">Parapente</li>
+                            <li class="<%= 'text-line-through' if !@adventure.is_skiing %>">Ski</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
