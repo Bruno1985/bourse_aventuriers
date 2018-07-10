@@ -1,5 +1,6 @@
 class Adventure < ApplicationRecord
   belongs_to :user
+  has_many :photos
   
 validates :main_activity, presence: true 
 
