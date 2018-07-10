@@ -277,7 +277,7 @@
    }
    
  
-   /* Style formulaire saisie Aventure  */
+   /* Style formulaire saisie Adventure  */
  
    label {
  
@@ -374,3 +374,19 @@
     color: #ff5a5f;
  
     }
+	
+    /* Affichage des photos  */
+	
+	
+	.panel-heading.preview {
+ 
+	         padding: 0;
+ 
+	 }
+ 
+  
+	.panel-heading.preview img{  
+ 
+	          width: 100%;
+ 
+	 }

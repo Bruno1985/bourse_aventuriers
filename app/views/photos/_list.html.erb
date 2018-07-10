@@ -1,0 +1,26 @@
+<!-- On vérifie la présence de photos pour continuer à afficher -->
+<% if @photos %>
+ 
+ <div class="row"> 
+ 		<!-- On crée une boucle pour traiter chaque photo indépendamment -->
+        <% @photos.each do |photo| %>
+ 
+             <div class="col-md-4"> 
+ 
+                  <div class="panel panel-default"> 
+ 
+                        <div class="panel-heading preview">
+							<!-- On affiche la photo -->
+                             <%= image_tag photo.image.url() %> 
+ 
+                        </div>
+ 
+                  </div>
+ 
+             </div>
+ 
+       <% end %>
+ 
+ </div>
+ 
+ <% end %>

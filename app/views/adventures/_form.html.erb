@@ -7,7 +7,7 @@
     <div class="panel-body">
         <div class="container">
             
-            <%= form_for @adventure do |f| %>
+            <%= form_for @adventure, html: {multipart: true} do |f| %>
 			<%= render '/shared/errors' %>
              
             <div class="row">
@@ -155,7 +155,30 @@
 
                 </div>
             </div>
-                
+            
+			<div class="row">
+ 
+			       <div class="col-md-4">
+ 
+			           <div class="form-group">
+ 
+			                 <span class="btn btn-default btn-file">
+ 
+			                 <i class = "fa fa-cloud-upload fa-lg"></i> Téléchargez vos photos !
+ 
+			                 <%= file_field_tag "images[]", type: :file, multiple: true %>
+ 
+			                 </span>
+ 
+			           </div>
+ 
+			       </div>
+ 
+			 </div>
+			 
+			 <div id="photos"><%= render 'photos/list' %></div> 
+
+			    
             <div class="row">
                 <div class="form-group">
                     <%= f.check_box :active %> Annonce active
