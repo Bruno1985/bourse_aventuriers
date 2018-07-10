@@ -1,0 +1,15 @@
+production:
+	
+  cloud_name: "hslctd8so"
+ 
+  
+  api_key: <%= ENV["975187714181513"] %>
+ 
+  
+  api_secret: <%= ENV["PuOBre5z1zaj_iZTfTc2IVkJEDs"] %>
+ 
+  
+  enhance_image_tag: true
+ 
+  
+  static_image_support: true
