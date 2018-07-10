@@ -14,6 +14,23 @@
                              <%= image_tag photo.image.url() %> 
  
                         </div>
+						
+						<div class="panel-body">
+ 
+						      <span class="pull-right">
+ 
+						              <%= link_to photo, remote: true, method: :delete, data: 
+						                   {confirm: "Certain de vouloir supprimer cette photo?"} do %>  
+				 		<!-- On ajoute remote: true pour faire appel au fichier jquery que l’on a ajouté ! -->
+						
+ 
+						               <i class="fa fa-times fa-lg"></i>
+ 
+						               <% end %>
+ 
+						     </span>
+ 
+						 </div>
  
                   </div>
  
