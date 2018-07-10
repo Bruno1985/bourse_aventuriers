@@ -5,7 +5,7 @@ validates :main_activity, presence: true
 
 validates :number_of_teammates, presence: true
 
-validates :date_of_departure, presence: true 
+#validates :date_of_departure, presence: true 
 
 validates :duration, presence: true   
  

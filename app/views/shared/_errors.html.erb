@@ -1,0 +1,8 @@
+<% unless @adventure.errors.empty?%>
+	<script type="text/javascript">
+		<% @adventure.errors.full_messages.each do |msg| %>
+		toastr.error('<%= msg %>')
+		<%end%>
+		</script>
+
+<% end %>
