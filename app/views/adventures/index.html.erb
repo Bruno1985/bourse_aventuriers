@@ -1,0 +1,60 @@
+<div class="row">
+ 
+      <div class="col-md-3">
+ 
+            <ul class="sidebar-list">
+ 
+                   <li class="sidebar-item"><%= link_to "Mes Propositions d'Aventures", adventures_path, 
+class: "sidebar-link active" %></li>
+ 
+            </ul>
+ 
+       </div>
+ 
+       <div class="col-md-9">
+ 
+            <div class="panel panel-default">
+ 
+                 <div class="panel-heading">Mes Propositions d'Aventures
+ 
+                 </div>
+ 
+  
+                <div class="panel-body">
+ 
+                      <% @adventures.each do |adventure| %>
+ 
+                         <div class="row">
+ 
+                                 <div class="col-md-2">
+ 
+                                      <%= image_tag adventure.photos[0].image.url(:thumb) if adventure.photos.length > 0 %> 
+ 
+                                 </div>                              
+ 
+                                 <div class="col-md-7">
+ 
+                                        <h4><%= adventure.listing_name %></h4>
+ 
+                                 </div>                              
+ 
+                                 <div class="col-md-3 right">
+ 
+                                     <%= link_to "Mettre à jour", edit_adventure_path(adventure), 
+                                                                  class: "btn btn-primary" %>
+ 
+                                 </div>
+ 
+                        </div>
+ 
+                        <hr>
+ 
+                   <% end %>
+ 
+               </div>
+ 
+           </div>
+ 
+     </div>
+ 
+ </div>
