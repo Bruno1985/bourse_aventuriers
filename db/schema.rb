@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_10_072735) do
+ActiveRecord::Schema.define(version: 2018_07_12_192256) do
 
 # Could not dump table "adventures" because of following StandardError
 #   Unknown type 'stringt' for column 'listing_name'
