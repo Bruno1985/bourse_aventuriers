@@ -29,6 +29,17 @@ class AdventuresController < ApplicationController
   
   def show
     @photos = @adventure.photos 
+    
+    @reviews = @adventure.reviews
+     
+        if current_user
+     
+              #@booked = Reservation.where("adventure_id = ? AND user_id = ?", @adventure.id, current_user.id).present? 
+     
+              @hasReview = @reviews.find_by(user_id: current_user.id)
+     
+        end
+    
   end
   
   def edit
