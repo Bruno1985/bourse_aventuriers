@@ -37,7 +37,8 @@
             </div>
             <div class="col-md-4">
                 
-				
+				<hr>
+			
 				
 				
 				<!-- Formulaire de réservation -->
@@ -95,6 +96,36 @@
             </div>
         </div>
 		
+		<!-- Google maps -->
+						        <div class="row">
+						            <div class="col-md-12">
+						                <div id="map"></div>
+	                
+						                <style>
+						                   #map {
+						                    height: 400px;
+						                    width: 100%;
+						                   }
+						                </style>
+	                
+						                <script>
+						                  function initMap() {
+						                    var uluru = {lat: <%= @adventure.latitude %>, lng: <%= @adventure.longitude %>};
+						                    var map = new google.maps.Map(document.getElementById('map'), {
+						                      zoom: 10,
+						                      center: uluru
+						                    });
+						                    var marker = new google.maps.Marker({
+						                      position: uluru,
+						                      map: map
+						                    });
+						                  }
+						                </script>
+						                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu8mJT0DytqjUtgcD4Hp6X75Phpgqy8AM&callback=initMap">
+						                </script>
+						            </div>
+						        </div>
+		
 				<!-- Carousel -->
 			        <div class="row">
 				            <div class="col-md-10 col-md-offset-1">
@@ -134,35 +165,8 @@
         
     </div>
 	
-	<!-- Google maps -->
-					        <div class="row">
-					            <div class="col-md-12">
-					                <div id="map"></div>
-	                
-					                <style>
-					                   #map {
-					                    height: 400px;
-					                    width: 100%;
-					                   }
-					                </style>
-	                
-					                <script>
-					                  function initMap() {
-					                    var uluru = {lat: <%= @adventure.latitude %>, lng: <%= @adventure.longitude %>};
-					                    var map = new google.maps.Map(document.getElementById('map'), {
-					                      zoom: 10,
-					                      center: uluru
-					                    });
-					                    var marker = new google.maps.Marker({
-					                      position: uluru,
-					                      map: map
-					                    });
-					                  }
-					                </script>
-					                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu8mJT0DytqjUtgcD4Hp6X75Phpgqy8AM&callback=initMap">
-					                </script>
-					            </div>
-					        </div>
+
 							
 							
+</div>
 </div>
