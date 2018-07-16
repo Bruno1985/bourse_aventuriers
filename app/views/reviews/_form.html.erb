@@ -1,0 +1,15 @@
+<%= form_for([@adventure, @adventure.reviews.new]) do |f| %>
+ 
+        <%= f.text_field :star %>
+ 
+        <%= f.text_field :comment %>
+ 
+        <%= f.hidden_field :adventure_id, value: @adventure.id %>
+ 
+        <div class="actions"%>
+
+             <%= f.submit %>
+ 
+        </div>
+ 
+ <% end %> 
