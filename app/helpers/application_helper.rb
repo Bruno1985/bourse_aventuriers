@@ -8,7 +8,7 @@ module ApplicationHelper
       user.avatar.url
     
       else
-      'default_image.png'
+      'default_image.jpg'
     end
     
   end
