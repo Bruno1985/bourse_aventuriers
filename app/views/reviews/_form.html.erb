@@ -2,7 +2,17 @@
  
         <div id="user_stars"></div>
  
-        <%= f.text_field :comment %>
+		<div class="form-group">
+ 
+		      <%= f.text_area :comment, rows: 3, class: "form-control" %>               
+ 
+		 </div>
+ 
+		 <div class="actions">
+ 
+		     <%= f.submit "Evaluez", class: "btn btn-primary" %>
+ 
+		 </div>
  
         <%= f.hidden_field :adventure_id, value: @adventure.id %>
  

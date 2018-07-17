@@ -23,6 +23,8 @@
                     <div class="col-md-9">
                         <h4><%= @adventure.listing_name %></h4>
                         <%= @adventure.address %>
+						<a href="#map", class="sidebar-link"><%= @adventure.address %></a> <a href="#average_rating", class="sidebar-link"><span id="average_rating_header"></span> <%= @reviews.count %></a> 
+						
                         <div class="row text-center row-space-1">
                  
                         </div>
@@ -103,7 +105,7 @@
 						      <div class="col-md-12">
 		 
 						            <h3>Commentaires <%= @adventure.average_rating %> (<%= @reviews.count %>)</h3>
-									<h3>Commentaires <span id="average_rating"></span> (<%= @reviews.count %>)</h3>
+									<h3><%= pluralize(@reviews.count, 'commentaire') %> <span id="average_rating"></span></h3>
 									
 		 
 						            <div class="container">
@@ -217,3 +219,17 @@
       });
  
  </script>
+	  
+<script>
+ 
+	        $('#average_rating_header').raty({
+ 
+	        path: '/assets',
+ 
+	        readOnly: true,
+ 
+	        score: <%= @adventure.average_rating %>
+ 
+	        });
+ 
+</script> 
