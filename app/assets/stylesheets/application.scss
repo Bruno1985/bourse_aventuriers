@@ -34,7 +34,7 @@
  
  
  
-  .container {
+.container {
  
   width: 80%;
  
@@ -389,3 +389,22 @@
 	          width: 100%;
  
 	 }
+	 
+     /* Homepage  */
+	 
+.home-link a, p {
+	  
+	 	      color: #82888a;
+	  
+	 	      text-decoration: none;
+	  
+	 	  }
+	  
+	   
+.home-link:hover a, .home-link:focus a {
+	  
+	 	      color: #82888a;
+	  
+	 	      text-decoration: none;
+	  
+	 	  }

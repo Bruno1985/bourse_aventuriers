@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
     def home
+      @adventures = Adventure.order("RANDOM()").limit(9)
     end
     
     def search
