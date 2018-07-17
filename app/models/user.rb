@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :adventures
   has_many :reviews
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
          
   validates :fullname, presence: true, length: {maximum: 65}
   
