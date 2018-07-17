@@ -5,4 +5,4 @@ class UsersController < ApplicationController
         @adventures = @user.adventures
      end
  
-end 
+end

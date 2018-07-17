@@ -5,13 +5,13 @@ class PagesController < ApplicationController
     
     def search
               if params[:search].present? && params[:search].strip != ""
-                 session[:aiirbnb_search] = params[:search]
+                 session[:bourse_aventuriers_search] = params[:search]
               end
       
               arrResult = Array.new
       
-              if session[:aiirbnb_search] && session[:aiirbnb_search] != ""
-                 @adventures_address = Adventure.where(active: true).near(session[:aiirbnb_search], 5, order:'distance')
+              if session[:bourse_aventuriers_search] && session[:bourse_aventuriers_search] != ""
+                 @adventures_address = Adventure.where(active: true).near(session[:bourse_aventuriers_search], 5, order:'distance')
               else
                  @adventures_address = Adventure.where(active: true).all
               end
