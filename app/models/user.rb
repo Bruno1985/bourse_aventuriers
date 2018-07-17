@@ -4,7 +4,7 @@ class User < ApplicationRecord
   
   has_many :adventures
   has_many :reviews
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
          
   validates :fullname, presence: true, length: {maximum: 65}
@@ -21,5 +21,35 @@ class User < ApplicationRecord
       clean_up_passwords
       result
     end
+    
+    def self.from_omniauth(auth)
+ 
+            user = User.where(email: auth.info.email).first
+ 
+            if user
+ 
+               return user
+ 
+            else
+ 
+                where(provider: auth.provider, uid: auth.uid).first_or_create do |u|
+ 
+                    u.fullname = auth.info.name
+ 
+                    u.provider = auth.provider
+ 
+                    u.uid = auth.uid
+ 
+                    u.email = auth.info.email
+ 
+                    u.image = auth.info.image
+ 
+                    u.password = Devise.friendly_token[0,20]
+ 
+            end
+ 
+       end
+ 
+     end
   
 end
