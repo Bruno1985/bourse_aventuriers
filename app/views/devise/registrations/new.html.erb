@@ -1,35 +1,36 @@
 <div class="row">
-    <div class="col-md-4 col-md-offset-4 text-center">
+	<div class="col-md-4 col-md-offset-4 text-center">
 
-<h2>S'inscrire</h2>
+<br>
+ 
+ <%= link_to "Inscription avec Facebook", user_facebook_omniauth_authorize_path, class: "btn btn-primary-fb" %>
+ 
+ <br><br>
+ 
+ <center>ou</center>
+ 
+ <hr>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render 'shared/devise_errors' %>
 
+ <div class="form-group">
+   <%= f.text_field :fullname, autofocus: true, class: "form-control", placeholder: "Nom complet (prénom + nom)" %>
+ </div>
+ 
   <div class="form-group">
-	  <br/>
-    <%= f.text_field :fullname, autofocus: true, autocomplete: "fullname", class: "form-control", placeholder: "Nom complet (Prénom + Nom)" %>
-  </div>
-  
-  <div class="form-group">
-	  <br/>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder:"Votre Email" %>
+    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Adresse email" %>
   </div>
 
   <div class="form-group">
-    <br/>
-    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder:"Votre Mot de passe" %>
-  </div>
-
-  <div class="form-group">
-	  <br/>
-    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder:"Confirmez votre Mot de passe" %>
+  <br />
+    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Créer un mot de passe" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "S'inscrire", class: "btn btn-default" %>
+    <%= f.submit "Inscription", class: "btn btn-primary" %>
   </div>
 <% end %>
 
-</div>
+ </div>
 </div>
