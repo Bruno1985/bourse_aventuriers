@@ -1,0 +1,207 @@
+<div id="wrapper">
+    <div id="sidebar">
+		
+		<div id="widget">
+		                <script>
+		                  function initMap() {
+		                    <% if @arrAdventures.length > 0 %>
+		                        var uluru = {lat: <%= @arrAdventures[0].latitude %>, lng: <%= @arrAdventures[0].longitude %>};
+		                        var map = new google.maps.Map(document.getElementById('widget'), {
+		                          zoom: 13,
+		                          center: uluru
+		                        });
+		                    <% else %>
+		                        var uluru = {lat: 48.866667, lng: 2.333333};
+		                        var map = new google.maps.Map(document.getElementById('widget'), {
+		                          zoom: 4,
+		                          center: uluru
+		                        });
+		                    <% end %>
+                    
+		                    <% @arrAdventures.each do |adventure| %>
+		                    var marker = new google.maps.Marker({
+		                      position: {lat: <%= adventure.latitude %>, lng: <%= adventure.longitude %>},
+		                      map: map,
+		                      title: "<%= adventure.listing_name %>"
+		                    });
+		                    <% end %>
+		                  }
+		                </script>
+		                <script async defer
+		                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZ9kxY1A5qt5BuJMXF-Nu8v5ZDifb6nJ0&callback=initMap">
+		                </script>
+		        </div>
+    </div>
+	
+    <div id="article">
+        <div class="row">
+            <div class="col-md-12">
+                <%= search_form_for @search, url: search_path do |f| %>
+                    
+                    
+                    <div class="row">
+                        <div class="col-md-6 select">
+                            <div class="form-group">
+                                <label>Activité principale</label>
+                                <%= f.select :main_activity_gteq, [["Randonnée/Trek","Randonnée/Trek"],
+							["Trail","Trail"],
+                            ["Alpinisme","Alpinisme"],
+                            ["Escalade","Escalade"],
+                            ["Voyage à vélo","Voyage à vélo"],
+							["VTT","VTT"],
+                            ["Moto","Randonnée/Trek"],
+                            ["Randonnée/Trek","Moto"],
+                            ["Voile","Voile"],
+                            ["Ski","Ski"],
+                            ["Kayak","Kayak"],
+                            ["Chiens de traîneau","Chien de traîneau"],
+                            ["Voyage à cheval","Voyage à cheval"]],
+							id: "main_activity", 
+                            prompt: "A sélectionner...", class: "form-control" %>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 select">
+                            <div class="form-group">
+                                <label>Nombre d'équipiers recherchés'</label>
+                               <%= f.select :number_of_teammates_gteq, [["1 équipier",1], ["2 équipiers",2],
+                               ["3 équipiers", 3], ["4 équipiers",4], ["5 équipiers",5], ["6 équipiers",6]], 
+                               prompt: "A sélectionner...", class: "form-control" %>
+                            </div>
+                        </div>      
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="row">
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_trekking_eq]", true %> Treks/Rando
+                        </div>
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_trail_eq]", true %> Trail
+                        </div>
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_alpinism_eq]", true %> Alpinisme
+                        </div>
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_climbing_eq]", true %> Escalade
+                        </div>
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_cycling_eq]", true %> Vélo
+                        </div>
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_motorbike_eq]", true %> Moto
+                        </div>
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_sailing_eq]", true %> Voile
+                        </div>
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_camping_eq]", true %> Camping
+                        </div>
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_skiing_eq]", true %> Ski
+                        </div>
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_fishing_eq]", true %> Pêche
+                        </div>
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_mountain_bike_eq]", true %> VTT
+                        </div>
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_kayaking_eq]", true %> Kayak
+                        </div>
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_diving_eq]", true %> Plongée
+                        </div>
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_dog_sledding_eq]", true %> Chien de traîneau
+                        </div>
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_horse_riding_eq]", true %> Voyage à cheval
+                        </div>
+                        <div class="col-md-3">
+                            <%= check_box_tag "q[is_paragliding_eq]", true %> Parapente
+                        </div>
+                    </div>
+                    
+                    <br>
+                    
+                    <div class="row">
+                        <%= f.submit "Rechercher", class:"btn btn-primary" %>
+                    </div>
+                    
+                    
+                <% end %>
+                
+                <hr>
+                
+                
+                
+                <div class="row">
+                    <% if @arrAdventures.empty? %>
+                        Aucune annonce ne correspond à votre recherche.
+                    <% else %>
+                        <% @arrAdventures.each do |adventure| %>
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading preview">
+                                    <%= image_tag adventure.photos[0].image.url(:medium) if adventure.photos.length > 0 %>
+                                </div>
+                                <div class="panel-body">
+                                    <%= image_tag avatar_url(adventure.user), class:"img-circle avatar-small" %>
+                                    <%= link_to adventure.listing_name, adventure %>
+                                </div>
+                            </div>
+                        </div>
+                        <% end %>
+                    <% end %>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    $(function() {
+        $('#start_date').datepicker({
+                    dateFormat: 'dd-mm-yy',
+                    monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août',
+                    'Septembre','Octobre','Novembre','Décembre'],
+                    dayNamesMin: ['D','L','M','M','J','V','S'],
+                    minDate: 0,
+                    maxDate: '3m',
+                    onSelect: function(selected) {
+                        var newdate = new Date($("#start_date").datepicker("getDate"));
+                        newdate.setDate(newdate.getDate() + 1);
+                        $('#end_date').datepicker("option","minDate", newdate);
+                    }
+        })
+        
+        $('#end_date').datepicker({
+                    dateFormat: 'dd-mm-yy',
+                    monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août',
+                    'Septembre','Octobre','Novembre','Décembre'],
+                    dayNamesMin: ['D','L','M','M','J','V','S'],
+                    minDate: 0,
+                    maxDate: '3m',
+                    onSelect: function(selected) {
+                        $('#start_date').datepicker("option", "maxDate", selected);
+                    }
+        });
+    })
+</script>
+	
+		
+<script>
+	 
+		 $(document).ready(function(){
+	 
+		           $("#sidebar").stick_in_parent({offset_top: 20});
+	 
+		 });
+	 
+</script>
