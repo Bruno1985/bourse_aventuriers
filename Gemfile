@@ -52,6 +52,10 @@ gem 'geocoder'
 
 gem 'nodejs-rails', '~> 0.0.1'
 
+gem 'jquery-ui-rails'
+
+gem 'ransack'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

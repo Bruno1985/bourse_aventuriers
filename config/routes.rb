@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   end
   resources :photos
   
+  get '/search' => 'pages#search'
+  
   root 'pages#home'
 end
