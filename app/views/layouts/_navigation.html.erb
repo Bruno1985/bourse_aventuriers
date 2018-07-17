@@ -34,6 +34,12 @@ data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 			   	<% end %> 
 			  </li>
 			  
+			  <li>
+			  	<%= link_to conversations_path do %>
+			  	Messages
+			  	<%end%>
+			 </li>
+			  
             	<% if (!user_signed_in?) %>
                 <li><%= link_to 'Inscription', new_user_registration_path %></li>
                 <li><%= link_to 'Connexion', new_user_session_path %></li>
