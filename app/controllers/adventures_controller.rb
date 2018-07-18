@@ -21,7 +21,7 @@ class AdventuresController < ApplicationController
          end
        end
        @photos = @adventure.photos
-       redirect_to edit_adventure_path(@adventure), notice:"Votre logement a été ajouté"
+       redirect_to edit_adventure_path(@adventure), notice:"Votre aventure a été ajoutée"
     else
       render :new
     end

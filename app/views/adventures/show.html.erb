@@ -104,15 +104,14 @@
 		 
 						      <div class="col-md-12">
 		 
-						            <h3>Commentaires <%= @adventure.average_rating %> (<%= @reviews.count %>)</h3>
-									<h3><%= pluralize(@reviews.count, 'commentaire') %> <span id="average_rating"></span></h3>
+									<h3><%= pluralize(@reviews.count, 'commentaire') %></h3>
 									
 		 
 						            <div class="container">
 		 
 						                <div>
 		 
-						                    <%= render 'reviews/form' if @booked && !@hasReview %>
+						                    <%= render 'reviews/form' if !@hasReview %>
 											<!-- le formulaire apparait seulement si l’utilisateur a déjà reservé des dates sur ce logement et s’il n’a pas déjà note celui-ci… -->
 		 
 						                </div>
