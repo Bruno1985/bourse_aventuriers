@@ -4,7 +4,7 @@
         <!-- Photo principale de l'annonce -->
         <div class="row">
             <div class="col-md-12">
-                <%= image_tag @photos[0].image.url(), class:"img-responsive" if @photos.length >0 %>
+                <%= image_tag @photos[0].image.url(), class:"img-responsive center-block" if @photos.length >0 %>
             </div>
         </div>
         
@@ -12,18 +12,17 @@
         
         <!-- Informations principales -->
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-3 text-center">
                         <%= image_tag avatar_url(@adventure.user), class:"img-circle avatar-large" %>
-                        <br>
+               
                         <br>
                         <%= @adventure.user.fullname %>
                     </div>
                     <div class="col-md-9">
-                        <h4><%= @adventure.listing_name %></h4>
-                        <%= @adventure.address %>
-						<a href="#map", class="sidebar-link"><%= @adventure.address %></a> <a href="#average_rating", class="sidebar-link"><span id="average_rating_header"></span> <%= @reviews.count %></a> 
+                        <h2><%= @adventure.listing_name %></h2>
+						<a href="#map", class="sidebar-link"><%= @adventure.address %></a>
 						
                         <div class="row text-center row-space-1">
                  
@@ -50,7 +49,7 @@
         <!-- Description -->
         <div class="row">
             <div class="col-md-12">
-                <h2>A propos de cette aventure</h2>
+                <h3>A propos de cette aventure</h3>
                 <p><%= @adventure.summary %></p>
             </div>
         </div>
@@ -127,38 +126,39 @@
 						        </div>
 		 
 						 </div>
+						 
+					 </hr>
 		
 		
 		
 		<!-- Google maps -->
-						        <div class="row">
-						            <div class="col-md-12">
-						                <div id="map"></div>
-	                
-						                <style>
-						                   #map {
-						                    height: 400px;
-						                    width: 100%;
-						                   }
-						                </style>
-	                
-						                <script>
-						                  function initMap() {
-						                    var uluru = {lat: <%= @adventure.latitude %>, lng: <%= @adventure.longitude %>};
-						                    var map = new google.maps.Map(document.getElementById('map'), {
-						                      zoom: 10,
-						                      center: uluru
-						                    });
-						                    var marker = new google.maps.Marker({
-						                      position: uluru,
-						                      map: map
-						                    });
-						                  }
-						                </script>
-						                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu8mJT0DytqjUtgcD4Hp6X75Phpgqy8AM&callback=initMap">
-						                </script>
-						            </div>
-						        </div>
+								<div class="row">
+									<div class="col-md-10 center">
+										<div id="map"></div>   
+											<style>
+											#map {
+											height: 400px;
+											width: 100%;
+											}
+											</style>
+								                
+											<script>
+											function initMap() {
+											var uluru = {lat: <%= @adventure.latitude %>, lng: <%= @adventure.longitude %>};
+											var map = new google.maps.Map(document.getElementById('map'), {
+											zoom: 10,
+											center: uluru
+											});
+											var marker = new google.maps.Marker({
+											position: uluru,
+											map: map
+											});
+											}
+											</script>
+											<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu8mJT0DytqjUtgcD4Hp6X75Phpgqy8AM&callback=initMap">
+											</script>
+										</div>
+								</div>
 		
 				<!-- Carousel -->
 			        <div class="row">

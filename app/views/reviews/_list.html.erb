@@ -2,7 +2,8 @@
 
 <% if @reviews.count == 0 %>
  
-      <div class="text-center"><h4>Aucun commentaire.</h4></div>
+      <div class="text-center"><h4>Aucun commentaire.</h4>
+	  </div>
  
  <% else %>
  
@@ -11,36 +12,22 @@
 <!-- sinon on affiche nos reviews, boucle pour chaque review avec les infos nécessaires pour la mise en forme -->
  
       <hr>
- 
       <div class="row">
- 
            <div class="col-md-1">
- 
                 <%= image_tag avatar_url(r.user), class: "img-circle avatar-medium" %>
- 
           </div>
- 
           <div class="col-md-11">
- 
               <div>
- 
                  <strong><%= r.user.fullname %> <div id="stars_<%= r.id%>"></div> </strong>
- 
                  <span class="pull-right">
- 
                  <%= link_to "Supprimer mon commentaire", [@adventure, r], method: :delete, data: {confirm: "Etes-vous sûr?"} if current_user && current_user == r.user %>
- 
                  </span>
- 
               </div>
- 
               <div><%= r.created_at.strftime("%d.%m.%y") %></div>
- 
               <div><%= r.comment %></div>
- 
            </div>
- 
         </div>
+		
 		
 <script>
  
