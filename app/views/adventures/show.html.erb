@@ -19,6 +19,9 @@
                
                         <br>
                         <%= @adventure.user.fullname %>
+						
+						<br>
+						<%= link_to "Voir le profil", @adventure.user %>
                     </div>
                     <div class="col-md-9">
                         <h2><%= @adventure.listing_name %></h2>
