@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require rails-timeago-all
 //= require toastr
+//= require bootstrap-datepicker
 //= require activestorage
 //= require turbolinks
 //= require_tree .
