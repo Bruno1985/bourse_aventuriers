@@ -10,6 +10,7 @@ validates :duration, presence: true
 validates :listing_name, presence: true, length: {maximum: 75}               
 validates :summary, presence: true, length: {maximum: 600} 
 validates :address, presence: true
+validates :level, presence: true
 
 geocoded_by :address
 after_validation :geocode, if: :address_changed?
