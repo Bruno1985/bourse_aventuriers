@@ -13,10 +13,11 @@ fr:
             summary:
             address:
     attributes:
-        room:
+        adventure:
             main_activity: "Type d'aventure"
             number_of_teammates: "Nombre d'équipiers"
             date_of_departure: "Date de départ souhaitée"
             listing_name: "Titre de l'annonce"
             summary: "Descriptif"
             address: "Lieu de l'aventure"
+            level: "Niveau"
