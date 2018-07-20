@@ -17,10 +17,12 @@ class MessagesController < ApplicationController
         @messages = @conversation.messages.order("created_at DESC")
         
         if @message.save
+          @user = User.find(@conversation.recipient_id)    
+          AppMailer.new_message(@user).deliver_now
           respond_to do |format|
-            format.js
+            format.js            
           end
-        end
+        end        
     end
     
    

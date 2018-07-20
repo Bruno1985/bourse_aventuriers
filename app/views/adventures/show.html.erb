@@ -44,10 +44,8 @@
 				<hr>
 			
 				
-				
-				<!-- Formulaire de réservation -->
             </div>    
-        	</div>
+       	</div>
         
         <!-- Description -->
         <div class="row">
@@ -59,45 +57,68 @@
         
         <!-- Activités -->
         <div class="row">
-            <div class="col-md-2">
-                <p>Activités</p>
+            <div class="col-md-12">
+                <h3>Activités secondaires</h3>          
             </div>
+			
             <div class="col-md-10">
                 <div class="row">
-                    <div class="col-md-6">
-                        <ul class="equipments">
-                            <li class="<%= 'text-line-through' if !@adventure.is_trekking %>">Randonnée/Treks</li>
-                            <li class="<%= 'text-line-through' if !@adventure.is_trail %>">Trail</li>
-                            <li class="<%= 'text-line-through' if !@adventure.is_alpinism %>">Alpinisme</li>
-                            <li class="<%= 'text-line-through' if !@adventure.is_climbing %>">Escalade</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="equipments">
-                            <li class="<%= 'text-line-through' if !@adventure.is_cycling %>">Vélo</li>
-                            <li class="<%= 'text-line-through' if !@adventure.is_motorbike %>">Moto</li>
-                            <li class="<%= 'text-line-through' if !@adventure.is_sailing %>">Voile</li>
-                            <li class="<%= 'text-line-through' if !@adventure.is_camping %>">Camping</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="equipments">
-                            <li class="<%= 'text-line-through' if !@adventure.is_fishing %>">Pêche</li>
-                            <li class="<%= 'text-line-through' if !@adventure.is_mountain_bike %>">VTT</li>
-                            <li class="<%= 'text-line-through' if !@adventure.is_kayaking %>">Kayak</li>
-                            <li class="<%= 'text-line-through' if !@adventure.is_diving %>">Plongée</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="equipments">
-                            <li class="<%= 'text-line-through' if !@adventure.is_dog_sledding %>">Chien de traîneau</li>
-                            <li class="<%= 'text-line-through' if !@adventure.is_horse_riding %>">Voyage à cheval</li>
-                            <li class="<%= 'text-line-through' if !@adventure.is_paragliding %>">Parapente</li>
-                            <li class="<%= 'text-line-through' if !@adventure.is_skiing %>">Ski</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+                    <div class="col-md-3">
+						<ul class="equipments">
+						<% if @adventure.is_trekking?%>
+						<li>Randonnée/Treks</li>
+						<% end %>
+						<% if @adventure.is_trail?%>
+						<li>Trail</li>
+						<% end %>
+						<% if @adventure.is_alpinism?%>
+						<li>Alpinisme</li>
+						<% end %>
+						<% if @adventure.is_climbing?%>
+						<li>Escalade</li>
+						<% end %>
+						<% if @adventure.is_cycling%>
+						<li>Vélo</li>
+						<% end %>
+						<% if @adventure.is_motorbike?%>
+						<li>Moto</li>
+						<% end %>
+						<% if @adventure.is_sailing?%>
+						<li>Voile</li>
+						<% end %>
+						<% if @adventure.is_camping?%>
+						<li>Bivouac/Camping</li>
+						<% end %>
+						<% if @adventure.is_skiing?%>
+						<li>Ski</li>
+						<% end %>
+						<% if @adventure.is_fishing?%>
+						<li>Pêche</li>
+						<% end %>
+						
+						<% if @adventure.is_mountain_bike?%>
+						<li>VTT</li>
+						<% end %>
+						
+						<% if @adventure.is_kayaking?%>
+						<li>Kayak</li>
+						<% end %>
+						<% if @adventure.is_diving?%>
+						<li>Plongée</li>
+						<% end %>
+						<% if @adventure.is_dog_sledding?%>
+						<li>Chien de traîneau</li>
+						<% end %>
+						<% if @adventure.is_horse_riding%>
+						<li>Voyage à cheval</li>
+						<% end %>
+						<% if @adventure.is_paragliding?%>
+						<li>Parapente</li>
+						<% end %>
+					</ul>
+					</div>
+				</div>
+			</div>
         </div>
 		
 						<!-- Reviews -->
