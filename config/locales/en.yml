@@ -12,6 +12,7 @@ fr:
             listing_name:
             summary:
             address:
+            countries:	
     attributes:
         adventure:
             main_activity: "Type d'aventure"
@@ -21,3 +22,4 @@ fr:
             summary: "Descriptif"
             address: "Lieu de l'aventure"
             level: "Niveau"
+            countries: "Pays"

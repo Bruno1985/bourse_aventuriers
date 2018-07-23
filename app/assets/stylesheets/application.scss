@@ -4,6 +4,8 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "bootstrap-datepicker";
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 
 /* Affichage de la photo d'avatar  */
 
@@ -29,6 +31,7 @@
  body {  
  
   color: #565a5c;
+  font-family: 'Lato', sans-serif;
  
   }
  

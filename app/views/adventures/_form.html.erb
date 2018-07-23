@@ -56,14 +56,27 @@
                 </div>
 				
 	            <div class="row">
-	                    <div class="col-md-6">
+					
+                    <div class="col-md-4 select">
+                        <div class="form-group">
+                            <label>Pays</label>
+                            <%= f.select :countries, [["France","France"],
+							["Allemagne","Allemagne"],
+                            ["Belgique","Belgique"],
+                            ["Espagne","Espagne"]],
+							id: "countries", 
+                            prompt: "Pays/Pays de départ", class: "form-control" %>
+                        </div>
+                    </div>
+					
+	                    <div class="col-md-4">
 	                        <div class="form-group">
 		                        <label>Date de départ souhaitée</label>
 		                        <%= f.text_field :date_of_departure, placeholder: "Date de départ", class: "form-control datepicker" %>
 	                        </div>
 	                    </div>
                 
-	                    <div class="col-md-6">
+	                    <div class="col-md-4">
 	                        <div class="form-group">
                      		   <label>Combien de jours durera l'aventure ?</label>
                    				<%= f.text_field :duration, placeholder: "Durée de l'aventure - En jours", class: "form-control" %>

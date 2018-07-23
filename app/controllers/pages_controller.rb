@@ -20,6 +20,7 @@ class PagesController < ApplicationController
               @adventures = @search.result
       
               @arrAdventures = @adventures.to_a
+            end
       
 
 end
