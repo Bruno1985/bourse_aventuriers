@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
   
   get '/search' => 'pages#search'
+  get '/homepage' => 'pages#homepage'
   
   root 'pages#home'
 end
