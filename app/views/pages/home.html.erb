@@ -1,11 +1,17 @@
-<div class="row">
-    <div class="col-md-8">
-        <div class="text-center">
-            <h1>Trouvez votre prochaine aventure.</h1>
-        </div>
-    </div>
-</div>
-<br>
+<header class="masthead text-center text-white d-flex">
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-lg-12 mx-auto">
+            <h1 class="text-uppercase">
+              <strong>ADVENTURER</strong>
+            </h1>
+            <hr>
+          </div>
+          <div class="col-lg-12 mx-auto">
+            <h2 class="text-faded mb-5">Trouvez des partenaires pour votre prochaine aventure.</h2>
+            <hr>
+			
+<div class="big-btn">
 <%= form_tag search_path, method: :get do %>
     <!-- FORME DE RECHERCHE 
 		<div class="row">
@@ -22,19 +28,62 @@
             <%= text_field_tag :end_date, params[:end_date], placeholder:"Départ", class:"form-control" %>
         </div> -->
         
-		<div class="col-md-2">
-            <%= submit_tag "Rechercher", class:"btn btn-primary" %>
+		<div class="col-md-12">
+            <%= submit_tag "Découvrir", class:"btn btn-info btn-lg"%>
+			
         </div>
     </div>
 <% end %>
-<br>
-<hr>
-<br>
+</div>
+          </div>
+        </div>
+      </div>
+</header>
 
+
+<section class="homepage-section" id="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading">Le site des aventuriers</h2>
+            <hr class="my-4">
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row" id="services-row">
+          <div class="col-lg-4 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-users text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Trouver des équipiers</h3>
+              <p class="text-muted mb-0">Faites connaître votre prochaine aventure pour trouver des compagnons de route.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Chercher une aventure</h3>
+              <p class="text-muted mb-0">Recherchez votre prochaine aventure parmi les annonces.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-lightbulb text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">S'inspirer</h3>
+              <p class="text-muted mb-0">De l'inspiration pour dans toutes les disciplines pour votre projet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+
+<section class="homepage-section" id="latest_adventures">
 <div class="container">
 <div class="row">
-    <div class="col-md-4">
-        <h4>Aventures</h4>
+    <div class="ol-lg-12 text-center">
+        <h2 class="section-heading">Dernières aventures</h2>
+		<hr class="my-4">
     </div>
 </div>
 <div class="row">
@@ -52,6 +101,9 @@
         </div>
     <% end %>
 </div>
+</div>
+</section>
+
 </div>
 
 
