@@ -33,9 +33,21 @@
 		                </script>
 		        </div>
     </div> -->
-	
-        <div class="container">
-		<div class="row">
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+		<div class="container">
+        Rechercher une aventure
+	</div>
+</div>
+</div>
+
+
+
+
+<div class="container">
+<section id="search-params-section">
+        <div class="row">
             <div class="col-md-12">
                 <%= search_form_for @search, url: search_path do |f| %>
                     
@@ -63,7 +75,7 @@
                         
                         <div class="col-md-3 select">
                             <div class="form-group">
-                                <label>Nombre d'équipiers recherchés</label>
+                                <label>Nombre d'équipiers</label>
                                <%= f.select :number_of_teammates_eq, [["1 équipier",1], ["2 équipiers",2],
                                ["3 équipiers", 3], ["4 équipiers",4], ["5 équipiers",5], ["6 équipiers",6]], 
                                prompt: "A sélectionner...", class: "form-control" %>
@@ -102,52 +114,52 @@
 					</div>
 					
 					<div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="check-box">
                             <%= check_box_tag "q[is_trekking_eq]", true %> Treks/Rando
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="check-box">
                             <%= check_box_tag "q[is_trail_eq]", true %> Trail
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="check-box">
                             <%= check_box_tag "q[is_alpinism_eq]", true %> Alpinisme
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="check-box">
                             <%= check_box_tag "q[is_climbing_eq]", true %> Escalade
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="check-box">
                             <%= check_box_tag "q[is_cycling_eq]", true %> Vélo
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="check-box">
                             <%= check_box_tag "q[is_motorbike_eq]", true %> Moto
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3"id="check-box">
                             <%= check_box_tag "q[is_sailing_eq]", true %> Voile
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="check-box">
                             <%= check_box_tag "q[is_camping_eq]", true %> Camping
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="check-box">
                             <%= check_box_tag "q[is_skiing_eq]", true %> Ski
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="check-box">
                             <%= check_box_tag "q[is_fishing_eq]", true %> Pêche
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="check-box">
                             <%= check_box_tag "q[is_mountain_bike_eq]", true %> VTT
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="check-box">
                             <%= check_box_tag "q[is_kayaking_eq]", true %> Kayak
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="check-box">
                             <%= check_box_tag "q[is_diving_eq]", true %> Plongée
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="check-box">
                             <%= check_box_tag "q[is_dog_sledding_eq]", true %> Chien de traîneau
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="check-box">
                             <%= check_box_tag "q[is_horse_riding_eq]", true %> Voyage à cheval
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="check-box">
                             <%= check_box_tag "q[is_paragliding_eq]", true %> Parapente
                         </div>
                     </div>
@@ -157,14 +169,20 @@
 					
                     
                     <div class="row">
-                        <%= f.submit "Rechercher", class:"btn btn-primary center-block" %>
-                    </div>
-                    
+                        <%= f.submit "Rechercher", class:"btn btn-info btn-lg center-block" %>
+						</div>
+						<br>
+					<div class="row">
+                        <div class="text-center">
+							<%= link_to search_path do %>Réinitialiser
+							<%end%>
+						</div>
+						</div>	                    
                     
                 <% end %>
                 
                 <hr>
-                
+        </section>    
                 
                 
                 <div class="row">
@@ -191,7 +209,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script>

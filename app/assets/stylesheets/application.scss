@@ -49,7 +49,7 @@
   
   /* Homepage  */
   
-  .homepage-section {
+  section {
 	  margin-top:25px;
 	  margin-bottom:25px;
   }
@@ -565,6 +565,10 @@
 		   
 		  	    }
 			
+#check-box {
+	margin-top: 10px;
+}			
+			
 /* Conversation  */
 				
 				
@@ -628,3 +632,12 @@ background-color: #F4F4F5;
 .service-box {
 	max-width: 400px;
 }
+
+/* Footer  */
+
+
+footer.footer {
+  padding-top: 4rem;
+  background-color: #d9d9d9;
+}
+
