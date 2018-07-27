@@ -27,7 +27,6 @@
  
                   <div class="panel-body">
  
-                      <div class="container">
 			            
 						<div class="form-group">
 			                <%= image_tag @photos[0].image.url(), class:"img-responsive center-block" if @photos.length >0 %>
@@ -39,100 +38,101 @@
 			            	</div>
 						</div>
 						
-						<hr>
-						
   						<div class="form-group">
-							<div class="col-md-6">
-								<ul>
-									<ol><h4><%= @adventure.main_activity %></h4></ol>
-									<ol><p><%= @adventure.level %></p></ol>
-									<ol>
-										<p><i class="fas fa-globe"></i><%= @adventure.country %></p></ol>
-									<ol><p><i class="fas fa-map-marker-alt"></i><a href="#map", class="sidebar-link"><%= @adventure.address %></a></p></ol>
-									<ol>
-										<p><i class="fas fa-calendar-alt"></i><%= @adventure.date_of_departure %></p></ol>
-									<ol>
-										<p><i class="fas fa-hourglass-half"></i><%= @adventure.duration %>jours</p></ol>
-								</ul>
+								<p class="activity-feature">Activité et niveau</p>
+									<p><%= @adventure.main_activity %></p>
+									<p><%= @adventure.level %></p>
+									<p><%= @adventure.number_of_teammates %>&nbsp;équipiers recherchés</p>
+									
+									<hr>
+								
+								
+								<p class="activity-feature">Localisation</p>
+						
+									<p><i class="fas fa-globe"></i>&nbsp;<%= @adventure.country %></p>
+									<p><i class="fas fa-map-marker-alt"></i>&nbsp;<a href="#map", class="sidebar-link"><%= @adventure.address %></a></p>
+									
+									<hr>
+							
+								<p class="activity-feature">Dates</p>
+				
+						
+										<p><i class="fas fa-calendar-alt"></i>&nbsp;<%= @adventure.date_of_departure %></p>
+							
+										<p><i class="fas fa-hourglass-half">&nbsp;</i><%= @adventure.duration %>&nbsp;jours</p>
+								
+								<hr>
+								
+								<p class="activity-feature">A propos</h3>
+								<p><%= @adventure.summary %></p>
+								
+								<hr>
+								
+								<p class="activity-feature">Activités secondaires</h3>
+								<% if @adventure.is_trekking?%>
+								<p>Randonnée/Treks</p>
+								<% end %>
+								<% if @adventure.is_trail?%>
+								<p>Trail</p>
+								<% end %>
+								<% if @adventure.is_alpinism?%>
+								<p>Alpinisme</p>
+								<% end %>
+								<% if @adventure.is_climbing?%>
+								<p>Escalade</p>
+								<% end %>
+								<% if @adventure.is_cycling%>
+								<p>Vélo</p>
+								<% end %>
+								<% if @adventure.is_motorbike?%>
+								<p>Moto</p>
+								<% end %>
+								<% if @adventure.is_sailing?%>
+								<p>Voile</p>
+								<% end %>
+								<% if @adventure.is_camping?%>
+								<p>Bivouac</p>
+								<% end %>
+								<% if @adventure.is_skiing?%>
+								<p>Ski</p>
+								<% end %>
+								<% if @adventure.is_fishing?%>
+								<p>Pêche</p>
+								<% end %>
+								<% if @adventure.is_mountain_bike?%>
+								<p>VTT</p>
+								<% end %>
+								<% if @adventure.is_kayaking?%>
+								<p>Kayak</p>
+								<% end %>
+								<% if @adventure.is_diving?%>
+								<p>Plongée</p>
+								<% end %>
+								<% if @adventure.is_dog_sledding?%>
+								<p>Chien de traîneau</p>
+								<% end %>
+								<% if @adventure.is_horse_riding%>
+								<p>Voyage à cheval</p>
+								<% end %>
+								<% if @adventure.is_paragliding?%>
+								<p>Parapente</p>
+								<% end %>
+								
+								<hr>
+								
+								
+								<p class="activity-feature"><%= pluralize(@reviews.count, 'commentaire') %></p>
+					                <div>
+					                    <%= render 'reviews/form' if !@hasReview %>
+										<!-- le formulaire apparait seulement si l’utilisateur a déjà reservé des dates sur ce logement et s’il n’a pas déjà note celui-ci… -->
+					                </div>
+					                <div>
+										<br>
+					                    <%= render 'reviews/list' %>
+					                </div>
+								
+								
 							</div>
-				  	  	</div>
-						
-						<!-- Description -->
-				        <div class="row">
-				            <div class="col-md-12">
-				                <h3>A propos de cette aventure</h3>
-				                <p><%= @adventure.summary %></p>
-				            </div>
-				        </div>
-        
-				        <!-- Activités -->
-				        <div class="row">
-				            <div class="col-md-12">
-				                <h3>Activités secondaires</h3>          
-				            </div>
-			
-				            <div class="col-md-10">
-				                <div class="row">
-				                    <div class="col-md-3">
-										<ul class="equipments">
-										<% if @adventure.is_trekking?%>
-										<ol>Randonnée/Treks</ol>
-										<% end %>
-										<% if @adventure.is_trail?%>
-										<ol>Trail</ol>
-										<% end %>
-										<% if @adventure.is_alpinism?%>
-										<ol>Alpinisme</ol>
-										<% end %>
-										<% if @adventure.is_climbing?%>
-										<ol>Escalade</ol>
-										<% end %>
-										<% if @adventure.is_cycling%>
-										<ol>Vélo</ol>
-										<% end %>
-										<% if @adventure.is_motorbike?%>
-										<ol>Moto</ol>
-										<% end %>
-										<% if @adventure.is_sailing?%>
-										<ol>Voile</ol>
-										<% end %>
-										<% if @adventure.is_camping?%>
-										<ol>Bivouac</ol>
-										<% end %>
-										<% if @adventure.is_skiing?%>
-										<ol>Ski</ol>
-										<% end %>
-										<% if @adventure.is_fishing?%>
-										<ol>Pêche</ol>
-										<% end %>
-						
-										<% if @adventure.is_mountain_bike?%>
-										<ol>VTT</ol>
-										<% end %>
-						
-										<% if @adventure.is_kayaking?%>
-										<ol>Kayak</ol>
-										<% end %>
-										<% if @adventure.is_diving?%>
-										<ol>Plongée</ol>
-										<% end %>
-										<% if @adventure.is_dog_sledding?%>
-										<ol>Chien de traîneau</ol>
-										<% end %>
-										<% if @adventure.is_horse_riding%>
-										<ol>Voyage à cheval</ol>
-										<% end %>
-										<% if @adventure.is_paragliding?%>
-										<ol>Parapente</ol>
-										<% end %>
-									</ul>
-									</div>
-								</div>
-							</div>
-				        </div>
-						<!-- Fin description + activités secondaires -->
-						
-			  	  	</div>
 			</div>
 		</div>
 </div>	
