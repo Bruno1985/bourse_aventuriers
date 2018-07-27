@@ -1,22 +1,173 @@
+
+<div class="row">        
+    
+	<div class="container">	
+	
+	<div class="col-md-2 text-center">
+	     <ul class="sidebar-list">
+	          <li class="sidebar-item">
+	               Organisateur de l'aventure
+	          </li>
+	     </ul>
+	 <br>
+                        <%= image_tag avatar_url(@adventure.user), class:"img-circle avatar-large" %>
+                		<br>
+                        <br>
+                        <%= @adventure.user.fullname %>
+						
+						<br>
+						<%= link_to "Voir le profil", @adventure.user %>
+	 </div>
+
+ 	<div class="col-md-8">
+		
+         <div class="panel panel-default">
+ 
+             <div class="panel-heading text-center">Détails de l'aventure</div>
+ 
+                  <div class="panel-body">
+ 
+                      <div class="container">
+			            
+						<div class="form-group">
+			                <%= image_tag @photos[0].image.url(), class:"img-responsive center-block" if @photos.length >0 %>
+			            </div>
+						
+						<div class="form-group">
+							<div class="col-md-12">
+			                <h2><%= @adventure.listing_name %></h2>
+			            	</div>
+						</div>
+						
+						<hr>
+						
+  						<div class="form-group">
+							<div class="col-md-6">
+								<ul>
+									<ol><h4><%= @adventure.main_activity %></h4></ol>
+									<ol><p><%= @adventure.level %></p></ol>
+									<ol>
+										<p><i class="fas fa-globe"></i><%= @adventure.country %></p></ol>
+									<ol><p><i class="fas fa-map-marker-alt"></i><a href="#map", class="sidebar-link"><%= @adventure.address %></a></p></ol>
+									<ol>
+										<p><i class="fas fa-calendar-alt"></i><%= @adventure.date_of_departure %></p></ol>
+									<ol>
+										<p><i class="fas fa-hourglass-half"></i><%= @adventure.duration %>jours</p></ol>
+								</ul>
+							</div>
+				  	  	</div>
+						
+						<!-- Description -->
+				        <div class="row">
+				            <div class="col-md-12">
+				                <h3>A propos de cette aventure</h3>
+				                <p><%= @adventure.summary %></p>
+				            </div>
+				        </div>
+        
+				        <!-- Activités -->
+				        <div class="row">
+				            <div class="col-md-12">
+				                <h3>Activités secondaires</h3>          
+				            </div>
+			
+				            <div class="col-md-10">
+				                <div class="row">
+				                    <div class="col-md-3">
+										<ul class="equipments">
+										<% if @adventure.is_trekking?%>
+										<ol>Randonnée/Treks</ol>
+										<% end %>
+										<% if @adventure.is_trail?%>
+										<ol>Trail</ol>
+										<% end %>
+										<% if @adventure.is_alpinism?%>
+										<ol>Alpinisme</ol>
+										<% end %>
+										<% if @adventure.is_climbing?%>
+										<ol>Escalade</ol>
+										<% end %>
+										<% if @adventure.is_cycling%>
+										<ol>Vélo</ol>
+										<% end %>
+										<% if @adventure.is_motorbike?%>
+										<ol>Moto</ol>
+										<% end %>
+										<% if @adventure.is_sailing?%>
+										<ol>Voile</ol>
+										<% end %>
+										<% if @adventure.is_camping?%>
+										<ol>Bivouac</ol>
+										<% end %>
+										<% if @adventure.is_skiing?%>
+										<ol>Ski</ol>
+										<% end %>
+										<% if @adventure.is_fishing?%>
+										<ol>Pêche</ol>
+										<% end %>
+						
+										<% if @adventure.is_mountain_bike?%>
+										<ol>VTT</ol>
+										<% end %>
+						
+										<% if @adventure.is_kayaking?%>
+										<ol>Kayak</ol>
+										<% end %>
+										<% if @adventure.is_diving?%>
+										<ol>Plongée</ol>
+										<% end %>
+										<% if @adventure.is_dog_sledding?%>
+										<ol>Chien de traîneau</ol>
+										<% end %>
+										<% if @adventure.is_horse_riding%>
+										<ol>Voyage à cheval</ol>
+										<% end %>
+										<% if @adventure.is_paragliding?%>
+										<ol>Parapente</ol>
+										<% end %>
+									</ul>
+									</div>
+								</div>
+							</div>
+				        </div>
+						<!-- Fin description + activités secondaires -->
+						
+			  	  	</div>
+			</div>
+		</div>
+</div>	
+
+
+
+
+
+
+
+
+
 <div class="panel panel-default">
     <div class="panel-body">
         
         <!-- Photo principale de l'annonce -->
-        <div class="row">
+        <section id="photo-photo">
+		<div class="row">
             <div class="col-md-12">
                 <%= image_tag @photos[0].image.url(), class:"img-responsive center-block" if @photos.length >0 %>
             </div>
         </div>
+	</section>
         
         <br>
         
         <!-- Informations principales -->
-        <div class="row">
+ <div class="container">       
+		<section id="main-information">
+		<div class="row">
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-3 text-center">
                         <%= image_tag avatar_url(@adventure.user), class:"img-circle avatar-large" %>
-               
+                		<br>
                         <br>
                         <%= @adventure.user.fullname %>
 						
@@ -27,9 +178,7 @@
                         <h2><%= @adventure.listing_name %></h2>
 						<a href="#map", class="sidebar-link"><%= @adventure.address %></a>
 						
-                        <div class="row text-center row-space-1">
-                 
-                        </div>
+                        
                         <div class="row text-center">
                             <div class="col-sm-3">
                                 <%= @adventure.main_activity %>
@@ -45,14 +194,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                
-				<hr>
-			
-				
-            </div>    
-       	</div>
-        
+		</div>
+	</section>
+
         <!-- Départ -->
         <div class="row">
             <div class="col-md-12">
@@ -81,54 +225,54 @@
                     <div class="col-md-3">
 						<ul class="equipments">
 						<% if @adventure.is_trekking?%>
-						<li>Randonnée/Treks</li>
+						<ol><i class="fas fa-check"></i>Randonnée/Treks</ol>
 						<% end %>
 						<% if @adventure.is_trail?%>
-						<li>Trail</li>
+						<ol><i class="fas fa-check"></i>&nbspTrail</ol>
 						<% end %>
 						<% if @adventure.is_alpinism?%>
-						<li>Alpinisme</li>
+						<ol><i class="fas fa-check"></i>&nbspAlpinisme</ol>
 						<% end %>
 						<% if @adventure.is_climbing?%>
-						<li>Escalade</li>
+						<ol><i class="fas fa-check"></i>&nbspEscalade</ol>
 						<% end %>
 						<% if @adventure.is_cycling%>
-						<li>Vélo</li>
+						<ol><i class="fas fa-check"></i>&nbspVélo</ol>
 						<% end %>
 						<% if @adventure.is_motorbike?%>
-						<li>Moto</li>
+						<ol><i class="fas fa-check"></i>&nbspMoto</ol>
 						<% end %>
 						<% if @adventure.is_sailing?%>
-						<li>Voile</li>
+						<ol><i class="fas fa-check"></i>&nbspVoile</ol>
 						<% end %>
 						<% if @adventure.is_camping?%>
-						<li>Bivouac/Camping</li>
+						<ol><i class="fas fa-check"></i>&nbspBivouac</ol>
 						<% end %>
 						<% if @adventure.is_skiing?%>
-						<li>Ski</li>
+						<ol><i class="fas fa-check"></i>&nbspSki</ol>
 						<% end %>
 						<% if @adventure.is_fishing?%>
-						<li>Pêche</li>
+						<ol><i class="fas fa-check"></i>&nbspPêche</ol>
 						<% end %>
 						
 						<% if @adventure.is_mountain_bike?%>
-						<li>VTT</li>
+						<ol><i class="fas fa-check"></i>&nbspVTT</ol>
 						<% end %>
 						
 						<% if @adventure.is_kayaking?%>
-						<li>Kayak</li>
+						<ol><i class="fas fa-check"></i>&nbspKayak</ol>
 						<% end %>
 						<% if @adventure.is_diving?%>
-						<li>Plongée</li>
+						<ol><i class="fas fa-check"></i>&nbspPlongée</ol>
 						<% end %>
 						<% if @adventure.is_dog_sledding?%>
-						<li>Chien de traîneau</li>
+						<ol><i class="fas fa-check"></i>&nbspChien de traîneau</ol>
 						<% end %>
 						<% if @adventure.is_horse_riding%>
-						<li>Voyage à cheval</li>
+						<ol><i class="fas fa-check"></i>&nbspVoyage à cheval</ol>
 						<% end %>
 						<% if @adventure.is_paragliding?%>
-						<li>Parapente</li>
+						<ol><i class="fas fa-check"></i>&nbspParapente</ol>
 						<% end %>
 					</ul>
 					</div>
@@ -200,7 +344,8 @@
 								</div>
 		
 				<!-- Carousel -->
-			        <div class="row">
+			        <section id="carousel-annonce">
+					<div class="row">
 				            <div class="col-md-10 col-md-offset-1">
 				                <div id="myCarousel" class="carousel slide" data-ride="carousel">
 				                  <!-- Indicators -->
@@ -237,6 +382,8 @@
 				        </div
         
     </div>
+</section>
+</div>
 	
 
 							
