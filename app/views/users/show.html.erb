@@ -1,7 +1,108 @@
 <div class="row">
+	<div class="container">
+ 
+      <div class="col-md-3">
+ 
+                  <%= image_tag avatar_url(@user), class: "avatar-full" %>
+				  
+				  <% if current_user != @user %>
+				   
+				  		     <div class="row-space-2 text-center">
+				   
+				  		         <%= link_to "Envoyer un message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post', class: "btn btn-primary wide" %>
+				   
+				  		     </div>
+				   
+				  		 <% end %>
+ 
+                  <div class="panel panel-default">
+ 
+                        <div class="panel-heading">Vérification</div>        
+ 
+                                <div class="panel-body">
+ 
+									   <% if @user.confirmed_at %>
+									   		Email confirmé
+									   	<% else %>
+									   		Email non confirmé
+									   <% end %>
+ 
+                                </div>
+ 
+                         </div>
+ 
+                   </div>
+ 
+ 
+       <div class="col-md-9">
+ 
+            <div class="panel panel-default">
+ 
+                 <div class="panel-heading">
+	                 <h2><%= @user.fullname %></h2>
+ 
+	                 <div class="description row-space-3">
+ 
+	                       <%= @user.description %>
+ 
+	                 </div>	
+ 
+                 </div>
+ 
+  
+                <div class="panel-body">
+					
+					<h4>Annonces (<%= @adventures.length %>)</h4><br>
+ 
+                      <% @adventures.each do |adventure| %>
+ 
+                         <div class="row">
+ 
+                                 <div class="col-md-2">
+ 
+                                      <%= image_tag adventure.photos[0].image.url(:thumb) if adventure.photos.length > 0 %> 
+ 
+                                 </div>                              
+ 
+                                 <div class="col-md-7">
+ 
+                                        <h4><%= adventure.listing_name %></h4>
+ 
+                                 </div>                              
+ 
+                                 <div class="col-md-3 right">
+ 
+                                     <%= link_to "Voir le détail", adventure_path(adventure), 
+                                                                  class: "btn btn-warning" %>
+ 
+                                 </div>
+ 
+                        </div>
+ 
+                        <hr>
+ 
+                   <% end %>
+ 
+               </div>
+ 
+           </div>
+ 
+     </div>
+	 
+ </div>
+ 
+ </div>
+
+
+
+
+
+<!--
+
+<div class="row">
  <div class = "container">
 
-	   <div class="col-md-3">
+	   <div class="col-md-2">
  
                   <%= image_tag avatar_url(@user), class: "avatar-full" %>
 				  
@@ -101,3 +202,5 @@
 	   </div>
  
  </div>
+ 
+ -->

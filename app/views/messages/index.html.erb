@@ -1,4 +1,5 @@
 <div class="row"> 
+	<div class="container">
  
       <div class="col-md-3 text-center">
  
@@ -33,9 +34,9 @@
  
                                 <%= f.hidden_field :user_id, value: current_user.id %>
  
-                            <div class="actions">
+                            <div class="actions text-center">
  
-                                  <%= f.submit "Envoyer un message", class: "btn btn-primary" %>
+                                  <%= f.submit "Envoyer un message", class: "btn btn-warning" %>
  
                             </div>
  
@@ -45,13 +46,14 @@
  
            </div>
  
-       </div>
  
        <div id="chat">
  
           <%= render @messages, locals: {conversation: @conversation} %>
  
        </div>
+	   
+	   </div>
  
    </div>
  

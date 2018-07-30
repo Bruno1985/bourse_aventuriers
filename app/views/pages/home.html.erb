@@ -29,7 +29,7 @@
         </div> -->
         
 		<div class="col-md-12">
-            <%= submit_tag "Découvrir", class:"btn btn-info btn-lg"%>
+            <%= submit_tag "Découvrir", class:"btn btn-warning btn-lg"%>
 			
         </div>
     </div>
@@ -82,22 +82,28 @@
 <div class="container">
 <div class="row">
     <div class="ol-lg-12 text-center">
-        <h2 class="section-heading">Dernières proposition d'aventures</h2>
+        <h2 class="section-heading">Dernières propositions d'aventures</h2>
 		<hr class="my-4">
     </div>
 </div>
 <div class="row">
-    <% @adventures.each do |adventure| %>
-        <div class="col-md-4">
+    <% @adventures.each_slice(1) do |group| %>
+        <div class="col-md-3">
+			<%group.each do |adventure|%>
             <div class="panel panel-default">
-                <div class="panel-heading preview">
+                <div class="panel-heading preview img-responsive">
                     <%= image_tag adventure.photos[0].image.url(:medium) if adventure.photos.length > 0 %>
                 </div>
                 <div class="panel-body">
-                    <p class="home-link"><b><%= link_to adventure.main_activity, adventure_path(adventure) %></b>
-                    <br><%= link_to adventure.listing_name, adventure_path(adventure) %></p>
+                    <p class="home-link"><%= link_to adventure.listing_name, adventure_path(adventure), class:"activity-feature" %></b>
+                    <br><%= link_to adventure.main_activity, adventure_path(adventure) %>
+					<br><%= link_to adventure.level, adventure_path(adventure) %>
+					<br><%= link_to adventure.duration, adventure_path(adventure) %>&nbspjours
+					
+				</p>
                 </div>
             </div>
+			<%end%>
         </div>
     <% end %>
 </div>

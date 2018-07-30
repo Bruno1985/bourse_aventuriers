@@ -16,10 +16,14 @@
                         <%= @adventure.user.fullname %>
 						
 						<br>
+						<% if (user_signed_in?) %>
 						<%= link_to "Voir le profil", @adventure.user %>
+						<% else %>
+						<p style="font-style:italic"><br>Vous devez être connecté pour accéder au profil et envoyer des messages.</p>
+						<%end%>
 	 </div>
 
- 	<div class="col-md-8">
+ 	<div class="col-md-7">
 		
          <div class="panel panel-default">
  
@@ -35,87 +39,88 @@
 						<div class="form-group">
 							<div class="col-md-12">
 			                <h2><%= @adventure.listing_name %></h2>
+							<hr>
 			            	</div>
 						</div>
 						
   						<div class="form-group">
 								<p class="activity-feature">Activité et niveau</p>
-									<p><%= @adventure.main_activity %></p>
-									<p><%= @adventure.level %></p>
-									<p><%= @adventure.number_of_teammates %>&nbsp;équipiers recherchés</p>
+									<p class="para-annonce"><%= @adventure.main_activity %></p>
+									<p class="para-annonce">Niveau&nbsp;<%= @adventure.level %></p>
+									<p class="para-annonce"><%= @adventure.number_of_teammates %>&nbsp;équipiers recherchés</p>
 									
 									<hr>
 								
 								
 								<p class="activity-feature">Localisation</p>
 						
-									<p><i class="fas fa-globe"></i>&nbsp;<%= @adventure.country %></p>
-									<p><i class="fas fa-map-marker-alt"></i>&nbsp;<a href="#map", class="sidebar-link"><%= @adventure.address %></a></p>
+									<p class="para-annonce"><i class="fas fa-globe"></i>&nbsp;<%= @adventure.countries %></p>
+									<p class="para-annonce"><i class="fas fa-map-marker-alt"></i>&nbsp;<a href="#map", class="sidebar-link"><%= @adventure.address %></a></p>
 									
 									<hr>
 							
 								<p class="activity-feature">Dates</p>
 				
 						
-										<p><i class="fas fa-calendar-alt"></i>&nbsp;<%= @adventure.date_of_departure %></p>
+										<p class="para-annonce"><i class="fas fa-calendar-alt"></i>&nbsp;<%= @adventure.date_of_departure %></p>
 							
-										<p><i class="fas fa-hourglass-half">&nbsp;</i><%= @adventure.duration %>&nbsp;jours</p>
+										<p class="para-annonce"><i class="fas fa-hourglass-half">&nbsp;</i><%= @adventure.duration %>&nbsp;jours</p>
 								
 								<hr>
 								
 								<p class="activity-feature">A propos</h3>
-								<p><%= @adventure.summary %></p>
+								<p class="para-annonce"><%= @adventure.summary %></p>
 								
 								<hr>
 								
-								<p class="activity-feature">Activités secondaires</h3>
+								<p class="activity-feature">Activités secondaires</p>
 								<% if @adventure.is_trekking?%>
-								<p>Randonnée/Treks</p>
+								<p class="para-annonce">Randonnée/Treks</p>
 								<% end %>
 								<% if @adventure.is_trail?%>
-								<p>Trail</p>
+								<p class="para-annonce">Trail</p>
 								<% end %>
 								<% if @adventure.is_alpinism?%>
-								<p>Alpinisme</p>
+								<p class="para-annonce">Alpinisme</p>
 								<% end %>
 								<% if @adventure.is_climbing?%>
-								<p>Escalade</p>
+								<p class="para-annonce">Escalade</p>
 								<% end %>
 								<% if @adventure.is_cycling%>
-								<p>Vélo</p>
+								<p class="para-annonce">Vélo</p>
 								<% end %>
 								<% if @adventure.is_motorbike?%>
-								<p>Moto</p>
+								<p class="para-annonce">Moto</p>
 								<% end %>
 								<% if @adventure.is_sailing?%>
-								<p>Voile</p>
+								<p class="para-annonce">Voile</p>
 								<% end %>
 								<% if @adventure.is_camping?%>
-								<p>Bivouac</p>
+								<p class="para-annonce">Bivouac</p>
 								<% end %>
 								<% if @adventure.is_skiing?%>
-								<p>Ski</p>
+								<p class="para-annonce">Ski</p>
 								<% end %>
 								<% if @adventure.is_fishing?%>
-								<p>Pêche</p>
+								<p class="para-annonce">Pêche</p>
 								<% end %>
 								<% if @adventure.is_mountain_bike?%>
-								<p>VTT</p>
+								<p class="para-annonce">VTT</p>
 								<% end %>
 								<% if @adventure.is_kayaking?%>
-								<p>Kayak</p>
+								<p class="para-annonce">Kayak</p>
 								<% end %>
 								<% if @adventure.is_diving?%>
-								<p>Plongée</p>
+								<p class="para-annonce">Plongée</p>
 								<% end %>
 								<% if @adventure.is_dog_sledding?%>
-								<p>Chien de traîneau</p>
+								<p class="para-annonce">Chien de traîneau</p>
 								<% end %>
 								<% if @adventure.is_horse_riding%>
-								<p>Voyage à cheval</p>
+								<p class="para-annonce">Voyage à cheval</p>
 								<% end %>
 								<% if @adventure.is_paragliding?%>
-								<p>Parapente</p>
+								<p class="para-annonce">Parapente</p>
 								<% end %>
 								
 								<hr>
@@ -123,273 +128,104 @@
 								
 								<p class="activity-feature"><%= pluralize(@reviews.count, 'commentaire') %></p>
 					                <div>
-					                    <%= render 'reviews/form' if !@hasReview %>
+					                    <% if (user_signed_in?) %>
+										<%= render 'reviews/form' if !@hasReview %>
 										<!-- le formulaire apparait seulement si l’utilisateur a déjà reservé des dates sur ce logement et s’il n’a pas déjà note celui-ci… -->
+										<% else %>
+										<p style="font-style:italic"><br>Vous devez être connecté pour commenter l'aventure.</p>
+										<%end%>
 					                </div>
 					                <div>
 										<br>
 					                    <%= render 'reviews/list' %>
 					                </div>
+									
+												        <section id="carousel-annonce">
+														<p class="activity-feature">Photos</p>
+														<br>
+														<div class="row">
+													            <div class="col-md-10 col-md-offset-1">
+													                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+													                  <!-- Indicators -->
+													                    <% if @photos %>
+													                        <% @photos.each do |photo| %>
+													                          <ol class="carousel-indicators">
+													                            <li data-target="#myCarousel" data-slide-to="<%= photo.id %>" class="active"></li>
+													                          </ol>
+													                        <% end %>
+													                    <% end %>
+		                
+													                  <!-- Wrapper for slides -->
+													                  <div class="carousel-inner" role="listbox">
+												                    <% if @photos %>
+													                    <% @photos.each do |photo| %>
+													                    <div class="item <%= 'active' if photo.id == @photos[0].id %>">
+													                      <%= image_tag photo.image.url() %>
+													                    </div>
+													                    <% end %>
+													                    <% end %>
+													                  </div>
+		                
+													                  <!-- Left and right controls -->
+													                  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+													                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+													                    <span class="sr-only">Précédent</span>
+													                  </a>
+													                  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+													                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+													                    <span class="sr-only">Suivant</span>
+													                  </a>
+													                </div>
+													            </div>
+													        </div
+        
+									    </div>
+									</section>
 								
 								
 							</div>
 			</div>
+		
+
+		
+		
+		
+		
 		</div>
 </div>	
 
-
-
-
-
-
-
-
-
-<div class="panel panel-default">
-    <div class="panel-body">
-        
-        <!-- Photo principale de l'annonce -->
-        <section id="photo-photo">
-		<div class="row">
-            <div class="col-md-12">
-                <%= image_tag @photos[0].image.url(), class:"img-responsive center-block" if @photos.length >0 %>
-            </div>
-        </div>
-	</section>
-        
-        <br>
-        
-        <!-- Informations principales -->
- <div class="container">       
-		<section id="main-information">
-		<div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-3 text-center">
-                        <%= image_tag avatar_url(@adventure.user), class:"img-circle avatar-large" %>
-                		<br>
-                        <br>
-                        <%= @adventure.user.fullname %>
-						
-						<br>
-						<%= link_to "Voir le profil", @adventure.user %>
-                    </div>
-                    <div class="col-md-9">
-                        <h2><%= @adventure.listing_name %></h2>
-						<a href="#map", class="sidebar-link"><%= @adventure.address %></a>
-						
-                        
-                        <div class="row text-center">
-                            <div class="col-sm-3">
-                                <%= @adventure.main_activity %>
-                            </div>
-                            
-                        </div>
-                        <div class="row text-center">
-                            <div class="col-sm-3">
-                                <%= @adventure.level %>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-		</div>
-	</section>
-
-        <!-- Départ -->
-        <div class="row">
-            <div class="col-md-12">
-                <h3>Départ</h3>
-                <p>Date de départ :<%= @adventure.date_of_departure %></p>
-				<p>Durée :<%= @adventure.duration %>jours</p>
-            </div>
-        </div>
-		
-		<!-- Description -->
-        <div class="row">
-            <div class="col-md-12">
-                <h3>A propos de cette aventure</h3>
-                <p><%= @adventure.summary %></p>
-            </div>
-        </div>
-        
-        <!-- Activités -->
-        <div class="row">
-            <div class="col-md-12">
-                <h3>Activités secondaires</h3>          
-            </div>
-			
-            <div class="col-md-10">
-                <div class="row">
-                    <div class="col-md-3">
-						<ul class="equipments">
-						<% if @adventure.is_trekking?%>
-						<ol><i class="fas fa-check"></i>Randonnée/Treks</ol>
-						<% end %>
-						<% if @adventure.is_trail?%>
-						<ol><i class="fas fa-check"></i>&nbspTrail</ol>
-						<% end %>
-						<% if @adventure.is_alpinism?%>
-						<ol><i class="fas fa-check"></i>&nbspAlpinisme</ol>
-						<% end %>
-						<% if @adventure.is_climbing?%>
-						<ol><i class="fas fa-check"></i>&nbspEscalade</ol>
-						<% end %>
-						<% if @adventure.is_cycling%>
-						<ol><i class="fas fa-check"></i>&nbspVélo</ol>
-						<% end %>
-						<% if @adventure.is_motorbike?%>
-						<ol><i class="fas fa-check"></i>&nbspMoto</ol>
-						<% end %>
-						<% if @adventure.is_sailing?%>
-						<ol><i class="fas fa-check"></i>&nbspVoile</ol>
-						<% end %>
-						<% if @adventure.is_camping?%>
-						<ol><i class="fas fa-check"></i>&nbspBivouac</ol>
-						<% end %>
-						<% if @adventure.is_skiing?%>
-						<ol><i class="fas fa-check"></i>&nbspSki</ol>
-						<% end %>
-						<% if @adventure.is_fishing?%>
-						<ol><i class="fas fa-check"></i>&nbspPêche</ol>
-						<% end %>
-						
-						<% if @adventure.is_mountain_bike?%>
-						<ol><i class="fas fa-check"></i>&nbspVTT</ol>
-						<% end %>
-						
-						<% if @adventure.is_kayaking?%>
-						<ol><i class="fas fa-check"></i>&nbspKayak</ol>
-						<% end %>
-						<% if @adventure.is_diving?%>
-						<ol><i class="fas fa-check"></i>&nbspPlongée</ol>
-						<% end %>
-						<% if @adventure.is_dog_sledding?%>
-						<ol><i class="fas fa-check"></i>&nbspChien de traîneau</ol>
-						<% end %>
-						<% if @adventure.is_horse_riding%>
-						<ol><i class="fas fa-check"></i>&nbspVoyage à cheval</ol>
-						<% end %>
-						<% if @adventure.is_paragliding?%>
-						<ol><i class="fas fa-check"></i>&nbspParapente</ol>
-						<% end %>
-					</ul>
-					</div>
-				</div>
+		<div class="col-md-3 text-center">
+	   	     <ul class="sidebar-list">
+	   	          <li class="sidebar-item">
+	   	               Localisation
+	   	          </li>
+	   	     </ul>
+	   	 <br>
+			<div id="map"></div>   
+				<style>
+				#map {
+				height: 400px;
+				width: 100%;
+				}
+				</style>
+	                
+				<script>
+				function initMap() {
+				var uluru = {lat: <%= @adventure.latitude %>, lng: <%= @adventure.longitude %>};
+				var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 10,
+				center: uluru
+				});
+				var marker = new google.maps.Marker({
+				position: uluru,
+				map: map
+				});
+				}
+				</script>
+				<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu8mJT0DytqjUtgcD4Hp6X75Phpgqy8AM&callback=initMap">
+				</script>
 			</div>
-        </div>
-		
-						<!-- Reviews -->
-		 
-						 <div class="row">
-		 
-						      <div class="col-md-12">
-		 
-									<h3><%= pluralize(@reviews.count, 'commentaire') %></h3>
-									
-		 
-						            <div class="container">
-		 
-						                <div>
-		 
-						                    <%= render 'reviews/form' if !@hasReview %>
-											<!-- le formulaire apparait seulement si l’utilisateur a déjà reservé des dates sur ce logement et s’il n’a pas déjà note celui-ci… -->
-		 
-						                </div>
-		 
-						                <div>
-		 
-						                    <%= render 'reviews/list' %>
-		 
-						                </div>
-		 
-						           </div>
-		 
-						        </div>
-		 
-						 </div>
-						 
-					 </hr>
-		
-		
-		
-		<!-- Google maps -->
-								<div class="row">
-									<div class="col-md-10 center">
-										<div id="map"></div>   
-											<style>
-											#map {
-											height: 400px;
-											width: 100%;
-											}
-											</style>
-								                
-											<script>
-											function initMap() {
-											var uluru = {lat: <%= @adventure.latitude %>, lng: <%= @adventure.longitude %>};
-											var map = new google.maps.Map(document.getElementById('map'), {
-											zoom: 10,
-											center: uluru
-											});
-											var marker = new google.maps.Marker({
-											position: uluru,
-											map: map
-											});
-											}
-											</script>
-											<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu8mJT0DytqjUtgcD4Hp6X75Phpgqy8AM&callback=initMap">
-											</script>
-										</div>
-								</div>
-		
-				<!-- Carousel -->
-			        <section id="carousel-annonce">
-					<div class="row">
-				            <div class="col-md-10 col-md-offset-1">
-				                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-				                  <!-- Indicators -->
-				                    <% if @photos %>
-				                        <% @photos.each do |photo| %>
-				                          <ol class="carousel-indicators">
-				                            <li data-target="#myCarousel" data-slide-to="<%= photo.id %>" class="active"></li>
-				                          </ol>
-				                        <% end %>
-				                    <% end %>
-		                
-				                  <!-- Wrapper for slides -->
-				                  <div class="carousel-inner" role="listbox">
-			                    <% if @photos %>
-				                    <% @photos.each do |photo| %>
-				                    <div class="item <%= 'active' if photo.id == @photos[0].id %>">
-				                      <%= image_tag photo.image.url() %>
-				                    </div>
-				                    <% end %>
-				                    <% end %>
-				                  </div>
-		                
-				                  <!-- Left and right controls -->
-				                  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-				                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				                    <span class="sr-only">Précédent</span>
-				                  </a>
-				                  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-				                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				                    <span class="sr-only">Suivant</span>
-				                  </a>
-				                </div>
-				            </div>
-				        </div
-        
-    </div>
-</section>
-</div>
-	
 
-							
-							
-</div>
-</div>
 
 <script>
  

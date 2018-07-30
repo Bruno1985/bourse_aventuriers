@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
     def home
-      @adventures = Adventure.order("RANDOM()").limit(9)
+      @adventures = Adventure.order("created_at DESC").limit(8)
     end
     
     def search
