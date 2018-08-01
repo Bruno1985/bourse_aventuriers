@@ -43,6 +43,12 @@ data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 			  	Messages
 			  	<%end%>
 			 </li>
+			 
+		  	<li class="nav-item nav-link">
+		   	<%= link_to newsletter_path do %>
+		   	Newsletter
+		   	<% end %> 
+		  	</li>
 			  
             	<% if (!user_signed_in?) %>
                 <li class="nav-item nav-link"><%= link_to 'Inscription', new_user_registration_path %></li>

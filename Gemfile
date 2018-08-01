@@ -68,6 +68,8 @@ gem 'binding_of_caller'
 
 gem 'bootstrap-datepicker-rails'
 
+gem 'sendinblue'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

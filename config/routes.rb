@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   
   get '/search' => 'pages#search'
   get '/newsletter' => 'pages#newsletter'
+  get '/contact' => 'pages#contact'
+  get '/terms' => 'pages#terms'
+  get '/privatepolicy' => 'pages#policy'
   
   root 'pages#home'
 end
