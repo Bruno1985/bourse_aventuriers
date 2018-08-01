@@ -1,4 +1,6 @@
-<p>Bonjour <%= @user.fullname %> !</p>
+<h4>Bonjour <%= @user.fullname %>,</h4>
  
   
 <p>Vous avez un nouveau message !</p>
+
+<p><%= link_to 'Lire le message', conversations_url %></p>

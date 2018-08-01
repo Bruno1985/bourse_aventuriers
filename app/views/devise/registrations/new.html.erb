@@ -26,6 +26,11 @@
   <br />
     <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Créer un mot de passe" %>
   </div>
+  
+  <div>
+	  <center><%= link_to "Termes et conditions", terms_path%></center>
+	  <br>
+  </div>
 
   <div class="actions">
     <%= f.submit "Inscription", class: "btn btn-warning" %>
