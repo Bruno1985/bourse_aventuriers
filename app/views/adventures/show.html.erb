@@ -126,7 +126,7 @@
 								<hr>
 								
 								
-								<p class="activity-feature"><%= pluralize(@reviews.count, 'commentaire') %></p>
+								<p class="activity-feature"><%= pluralize(@reviews.count, 'commentaires') %></p>
 					                <div>
 					                    <% if (user_signed_in?) %>
 										<%= render 'reviews/form' if !@hasReview %>

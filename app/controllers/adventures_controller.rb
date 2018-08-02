@@ -36,7 +36,7 @@ class AdventuresController < ApplicationController
      
               #@booked = Reservation.where("adventure_id = ? AND user_id = ?", @adventure.id, current_user.id).present? 
      
-              @hasReview = @reviews.find_by(user_id: current_user.id)
+              #@hasReview = @reviews.find_by(user_id: current_user.id)
      
         end
     
