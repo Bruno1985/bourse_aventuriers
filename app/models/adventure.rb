@@ -12,6 +12,7 @@ validates :summary, presence: true, length: {maximum: 600}
 validates :address, presence: true
 validates :level, presence: true
 validates :countries, presence: true
+validates :photos, presence: true
 
 
 geocoded_by :address
