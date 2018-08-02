@@ -8,7 +8,7 @@ module ApplicationHelper
       user.avatar.url
     
       else
-      'default_image.jpg'
+      'https://res.cloudinary.com/hslctd8so/image/upload/v1533217885/default_image.jpg'
     end
     
   end
