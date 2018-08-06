@@ -12,14 +12,16 @@ fr:
             listing_name:
             summary:
             address:
-            countries:	
+            countries:
+            duration:		
     attributes:
         adventure:
             main_activity: "Type d'aventure"
             number_of_teammates: "Nombre d'équipiers"
             date_of_departure: "Date de départ souhaitée"
             listing_name: "Titre de l'annonce"
-            summary: "Descriptif"
+            summary: "Résumé"
             address: "Lieu de l'aventure"
             level: "Niveau"
             countries: "Pays"
+            duration: "Durée"

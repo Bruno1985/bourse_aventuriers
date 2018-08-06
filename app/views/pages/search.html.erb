@@ -191,8 +191,12 @@
                         <% @arrAdventures.each do |adventure| %>
                         <div class="col-md-3">
                             <div class="panel panel-default">
-                                <div class="panel-heading preview">
+                                <div class="panel-heading preview img-responsive">
+									<% if (adventure.photos.present?) %>
                                     <%= image_tag adventure.photos[0].image.url(:medium) if adventure.photos.length > 0 %>
+									<%else%>
+									<%= image_tag 'default_adventure_pic.jpeg' %>
+									<%end%>
                                 </div>
                                 <div class="panel-body search-pics">
                                     <%= image_tag avatar_url(adventure.user), class:"img-circle avatar-small" %>
