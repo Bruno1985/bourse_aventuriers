@@ -1,4 +1,82 @@
-	<nav class="navbar-expand-lg fixed-top scrolling-navbar navbar-default">
+  <div class="row">
+  <header id="js-header">
+      
+	  <div class="container clearfix">
+		  <div class="col-md-2">
+          <h1 id="logo">Aventuriers.co</h1>
+	  	</div>
+		<div class="col-md-6">
+          <nav>
+  			  <div class="col-md-6">
+	              <a <%= link_to new_adventure_path do %><strong>
+  			  	<i class="fas fa-plus"></i>&nbsp;&nbsp;Proposer une aventure</strong>
+  			  	<%end%></a>
+  			</div>
+			  <div class="col-md-2">
+              <a <%= link_to root_path do %>
+  			  	Accueil
+  			  	<%end%></a>
+			</div>
+			<div class="col-md-2">
+              <a <%= link_to conversations_path do %>
+			  	Messages
+			  	<%end%></a>
+			</div>
+				
+				<div class="col-md-2">
+              <a <%= link_to newsletter_path do %>
+		   	Newsletter
+		   	<% end %></a>
+			</div>
+          </nav>
+		</div>
+
+	  
+	  <div class="col-md-4">
+		  <% if (!user_signed_in?) %>
+	  	<nav>
+			<div class="col-md-6">
+              <a <%= link_to new_user_session_path  do %>
+		   	Connexion
+			<%end%></a>
+		</div>
+		<div class="col-md-6">
+			<a <%= link_to new_user_registration_path do %>
+				Inscription
+		   	<% end %></a>
+		</div>
+	  	</nav>
+		<%else%>
+	  	<nav>
+			<div class="col-md-3">
+              <a <%= image_tag avatar_url(current_user), class:"img-circle avatar-small"%></a>
+		</div>
+		<div class="col-md-3">
+			<a <%= link_to edit_user_registration_path do %>
+				Mon profil
+		   	<% end %></a>
+		</div>
+		<div class="col-md-3">
+			<a <%= link_to adventures_path do %>
+				Mes aventures
+		   	<% end %></a>
+		</div>
+		<div class="col-md-3">
+			<a <%= link_to destroy_user_session_path, method: :delete do %>
+				Déconnexion
+		   	<% end %></a>
+		</div>
+	  	</nav>
+		
+		<%end%>
+	</div>
+	
+	</div>  
+  </header>
+</div>
+
+<!--
+<nav class="navbar-expand-lg fixed-top scrolling-navbar navbar-default">
 	  <div class="container-nav">
 		<div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -11,7 +89,7 @@ data-target="#navbar" aria-expanded="false" aria-controls="navbar">
           
 		  </button>
           
-		  <%= link_to 'Bourse aux aventures', root_path, { :class=>"navbar-brand" } %>
+		  <%= link_to 'Aventuriers.co', root_path, { :class=>"navbar-brand" } %>
         
 		</div>
         
@@ -22,21 +100,28 @@ data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 			<span class="fa fa-search"></span> 
 			<%= text_field_tag :search, params[:search], placeholder: "Rechercher", class: "form-control" %>
 			</div>
-			<% end %> -->
+			<% end %>
 				
           <ul class="nav navbar-nav navbar-right">
 			  
-			  <li class="nav-item nav-link">
-			   	<%= link_to search_path do %>
+			  <!-- ><li class="nav-item nav-link">
+			   		<%= link_to search_path do %>
 			   	<i class="fas fa-search"></i> Rechercher
 			   	<% end %> 
-			  </li>
+			  </li> 
+			  
 			  
 			  <li class="nav-item nav-link">
 			   	<%= link_to new_adventure_path do %>
 			   	<i class="fas fa-plus"></i> Proposer une aventure
 			   	<% end %> 
 			  </li>
+			  
+  			  <li class="nav-item nav-link">
+  			  	<%= link_to root_path do %>
+  			  	Accueil
+  			  	<%end%>
+  			 </li>
 			  
 			  <li class="nav-item nav-link">
 			  	<%= link_to conversations_path do %>
@@ -55,7 +140,7 @@ data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <li class="nav-item nav-link"><%= link_to 'Connexion', new_user_session_path %></li>
                 
             	<% else %>
-            		<li class="dropdown">
+            		<li class="dropdown nav-item nav-link">
               	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
               aria-haspopup="true" aria-expanded="false">
 			  		<%= image_tag avatar_url(current_user), class:"img-circle avatar-small"%>
@@ -75,4 +160,22 @@ data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 		</div>
       
 	  </div>
-</nav>
+</nav> -->
+
+
+<script>
+	function resizeHeaderOnScroll() {
+	  const distanceY = window.pageYOffset || document.documentElement.scrollTop,
+	  shrinkOn = 200,
+	  headerEl = document.getElementById('js-header');
+  
+	  if (distanceY > shrinkOn) {
+	    headerEl.classList.add("smaller");
+	  } else {
+	    headerEl.classList.remove("smaller");
+	  }
+	}
+
+	window.addEventListener('scroll', resizeHeaderOnScroll);
+	
+	</script>

@@ -1,12 +1,212 @@
-<header class="masthead text-center text-white d-flex">
+      <div id="content">
+          <section class="section-1">
+			<div class="main-part-homepage">
+              <div class="container">
+                  <h1>La Bourse aux Aventures</h1>
+                  <p>Trouvez des partenaires pour votre prochaine aventure</p>
+              </div>
+		  </div>
+          </section>
+		  
+          <section class="section-2">
+			  <div class="container">
+				  <h1 class="section-title">le site des aventuriers</h1>
+				  <br />
+				  <hr>
+			  	<div class="row">
+			          <!-- Boxes de Acoes -->
+			      	<div class="col-xs-12 col-sm-6 col-lg-4">
+			  			<div class="box">							
+			  				<div class="icon">
+			  					<div class="image"><i class="fas fa-users"></i></div>
+			  					<div class="info">
+			  						<h3 class="title">Trouvez des équipiers</h3>
+			  						<p>
+										Faites connaître votre prochaine aventure pour trouver des compagnons de route.
+			  						</p>
+			  						<div class="more">
+			  							<a href="#" title="Title Link">
+			  								c'est parti <i class="fa fa-angle-double-right"></i>
+			  							</a>
+			  						</div>
+			  					</div>
+			  				</div>
+			  				<div class="space"></div>
+			  			</div> 
+			  		</div>
+			
+			          <div class="col-xs-12 col-sm-6 col-lg-4">
+			  			<div class="box">							
+			  				<div class="icon">
+			  					<div class="image"><i class="fas fa-search"></i></div>
+			  					<div class="info">
+			  						<h3 class="title">Cherchez une aventure</h3>
+			      					<p>
+										Recherchez votre prochaine aventure parmi les annonces.
+			  						</p>
+			  						<div class="more">
+			  							<a href="#" title="Title Link">
+			  								c'est parti<i class="fa fa-angle-double-right"></i>
+			  							</a>
+			  						</div>
+			  					</div>
+			  				</div>
+			  				<div class="space"></div>
+			  			</div> 
+			  		</div>
+			
+			          <div class="col-xs-12 col-sm-6 col-lg-4">
+			  			<div class="box">							
+			  				<div class="icon">
+			  					<div class="image"><i class="far fa-lightbulb"></i></div>
+			  					<div class="info">
+			  						<h3 class="title">Inspirez-vous</h3>
+			      					<p>
+			  							Des idées de parcours et de projets dans toutes les disciplines, pour tous les niveaux.</p>
+			  						<div class="more">
+			  							<a href="#" title="Title Link">
+			  								c'est parti <i class="fa fa-angle-double-right"></i>
+			  							</a>
+			  						</div>
+			  					</div>
+			  				</div>
+			  				<div class="space"></div>
+			  			</div> 
+			  		</div>		    
+			  		<!-- /Boxes de Acoes -->
+			  	</div>
+			  </div>
+          </section>
+		  <!-- End of section-2 -->
+		  
+		  <section class="section-3">
+			  
+			 <div class="container">
+				 <div class="row section-3-title">
+					 <div class="col-md-9">
+						 <h1>Nos dernières propositions d’aventures</h1>
+						 <br>
+						 <p>Nos utilisateurs n’attendent que vous pour partir à l’aventure, jettez un oeil aux dernières propositions.</p>
+					 </div>
+					 <div class="col-md-3">
+						 <button type="button" class="btn btn-warning">Voir plus</button>
+					 </div>
+				 </div>
+
+			                 <div class="row section-3-selection">
+								 <% Adventure.last(4).each do |p| %>
+			                     <div class="col-lg-3 col-md-6 col-sm-12 box">
+			                         <a class="thumbnail panel-heading preview img-responsive">
+										 <% if (p.photos.present?) %>
+										                     <%= image_tag p.photos[0].image.url(:medium) if p.photos.length > 0 %>
+										 <%else%>
+										 <%= image_tag 'default_adventure_pic.jpeg' %>
+										 <%end%>
+			                         </a>
+			                         <h3 class="adventure-name"><%= p.listing_name %> </h3>
+			                         <p><%= p.main_activity%>
+									 	<br>
+										<%= p.level%>
+										<br>
+										<%= p.duration %>&nbspjours
+										<br>
+										<%= p.address%>
+										<br>
+									 </p>
+									 <br />
+			                         <a> <%= link_to "Découvrir", adventure_path(p), class:"btn btn-primary btn-sm"%></a>
+								
+			                     </div>
+			                     
+								 
+								 <%end%>
+			                 
+							 </div>
+			 
+		  </section>
+		  <!-- End of section-3 -->
+		  
+		  
+		  
+          <section class="section-5">
+			  <div class="container">
+				  <div class="row">
+				  <h1 class="section-title">ils nous soutiennent</h1>
+				  <br />
+				  <hr>
+			  	<div class="row">
+			          <!-- Boxes de Acoes -->
+			      	<div class="col-xs-12 col-sm-6 col-lg-4">
+			  			<div class="box">							
+			  				<div class="icon">
+			  					<%= image_tag 'imago.jpeg', class:"img-thumbnail avatar-large" %>
+			  					<div class="info">
+			  						<h3 class="title">IMAGO</h3>
+			  						<p>
+										Imago, l'incubateur d'aventures, accompagne les néo-aventuriers pour faire éclore leurs projets d’explorations sportives, écologiques et solidaires.</p>
+			  						<div class="more">
+			  							<a href="#" title="Title Link">
+			  								découvrir <i class="fa fa-angle-double-right"></i>
+			  							</a>
+			  						</div>
+			  					</div>
+			  				</div>
+			  				<div class="space"></div>
+			  			</div> 
+			  		</div>
+			
+			          <div class="col-xs-12 col-sm-6 col-lg-4">
+			  			<div class="box">							
+			  				<div class="icon">
+			  					<%= image_tag 'chilowe.png', class:"img-thumbnail avatar-large" %>
+			  					<div class="info">
+			  						<h3 class="title">CHILOWE</h3>
+			      					<p>
+										Chilowé, une newsletter, des évènements et bientôt une série de guides locaux, qui répertorient les meilleures idées de microaventures à vivre autour de chez soi.</p>
+			  						<div class="more">
+			  							<a href="#" title="Title Link">
+			  								découvrir<i class="fa fa-angle-double-right"></i>
+			  							</a>
+			  						</div>
+			  					</div>
+			  				</div>
+			  				<div class="space"></div>
+			  			</div> 
+			  		</div>
+			
+			          <div class="col-xs-12 col-sm-6 col-lg-4">
+			  			<div class="box">							
+			  				<div class="icon">
+			  					<%= image_tag 'explora.png', class:"img-thumbnail avatar-large" %>
+			  					<div class="info">
+			  						<h3 class="title">EXPLORA PROJECT</h3>
+			      					<p>Explora Project est une agence de voyage d’aventure spécialisée dans les expéditions extrêmes sans guide («Self-Guided Extreme Expeditions»).</p>
+			  						<div class="more">
+			  							<a href="#" title="Title Link">
+			  								découvrir <i class="fa fa-angle-double-right"></i>
+			  							</a>
+			  						</div>
+			  					</div>
+			  				</div>
+			  				<div class="space"></div>
+			  			</div> 
+			  		</div>		    
+			  		<!-- /Boxes de Acoes -->
+			  	</div>
+			</div>
+			  </div>
+          </section>
+		  <!-- End of section-5 -->
+		  
+		  
+     </div>
+
+
+
+
+<!-- ><header class="masthead text-center text-white d-flex">
       <div class="container my-auto">
         <div class="row">
-          <div class="col-lg-12 mx-auto">
-            <h1 class="text-uppercase">
-              <strong>Aventuriers.co</strong>
-            </h1>
-            <hr>
-          </div>
           <div class="col-lg-12 mx-auto">
             <h2 class="text-faded mb-5">Trouvez des partenaires pour votre prochaine aventure.</h2>
             <hr>
@@ -26,7 +226,7 @@
         </div>
         <div class="col-md-2">
             <%= text_field_tag :end_date, params[:end_date], placeholder:"Départ", class:"form-control" %>
-        </div> -->
+        </div> 
         
 		<div class="col-md-12">
             <%= submit_tag "Découvrir", class:"btn btn-warning btn-lg"%>
@@ -194,7 +394,7 @@
       </div>
 </section>
 
-
+-->
 
 <script>
     $(function() {
@@ -225,3 +425,5 @@
         });
     })
 </script>
+	
+	

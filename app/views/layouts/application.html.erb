@@ -16,6 +16,8 @@
   </head>
 
   <body>
+	  <div class="wrapper">
+		  <div id="main">
 	  	<%= render '/layouts/navigation' %>
 		
 		<%= render 'shared/message' %>
@@ -23,5 +25,7 @@
  
    <div><%= yield %></div>
    <%= render '/layouts/footer' %>
+</div>
+</div>
   </body>
 </html>
