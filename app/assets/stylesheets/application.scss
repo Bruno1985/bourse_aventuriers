@@ -70,7 +70,6 @@
 
  a {
  	text-decoration: none;
- 	color: #ffffff;
  	font-weight: 300;
 	
  }
@@ -389,6 +388,57 @@
 	  letter-spacing: 0.8px;
 	  color: #000000;
 }
+
+/* Second Part Homepage */
+
+.second-part-homepage {
+	
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #dd0000;
+    background-color: #f2f2f2;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 3px solid !important;
+    font-weight: bold;
+}
+.nav-tabs .nav-link {
+    border-bottom: 1px solid #dd0000;
+    color: #696969;
+}
+
+.card-body-title {
+	line-height:0px;
+	margin-bottom: 35px;
+}
+.card-body h1 {
+	text-transform: uppercase;
+	font-family: Montserrat;
+	  font-size: 20px;
+	  font-weight: bold;
+	  font-style: normal;
+	  font-stretch: normal;
+	  line-height: normal;
+	  letter-spacing: 0.8px;
+	  color: #000000;
+	  margin-bottom:0;
+  	  display: table-cell; /* comportement visuel de cellule */
+  	  vertical-align: middle;
+}
+
+.card-body p {
+	font-family: Roboto;
+	  font-size: 14px;
+	  font-weight: normal;
+	  font-style: normal;
+	  font-stretch: normal;
+	  line-height: 2;
+	  letter-spacing: 1px;
+	  color: #555555;
+  	  display: table-cell; /* comportement visuel de cellule */
+  	  vertical-align: middle;
+}
+
 
 /* Section-2 */
 

@@ -188,6 +188,7 @@
                     <% if @arrAdventures.empty? %>
                         Aucune annonce ne correspond à votre recherche.
                     <% else %>
+					<%= paginate @adventures %>
                         <% @arrAdventures.each do |adventure| %>
                         <div class="col-md-3">
                             <div class="panel panel-default">
