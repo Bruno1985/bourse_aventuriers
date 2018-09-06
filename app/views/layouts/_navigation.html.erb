@@ -11,27 +11,29 @@
               <span class="icon-menu"></span>
               <span class="icon-menu"></span>
             </button>
-            <a href="home.html.erb" class="navbar-brand"><img src="/assets/logo_adventure_80.png" alt=""></a>
+            <%= link_to root_path, class: 'navbar-brand' do %>
+              <img src="/assets/logo_adventure_80.png" alt="">
+            <% end %>
           </div>
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end">
-			  
+
 			  <li class="nav-item nav-link">
 			   	<%= link_to new_adventure_path do %>
 			   	<i class="fas fa-plus"></i> Proposez une aventure
-			   	<% end %> 
+			   	<% end %>
 			  </li>
 			  <li class="nav-item nav-link">
 			   	<%= link_to conversations_path do %>
 			   	Messages
-			   	<% end %> 
+			   	<% end %>
 			  </li>
-          	
+
 			<% if (!user_signed_in?) %>
               <li class="nav-item nav-link">
 				  <%= link_to 'Inscription', new_user_registration_path %>
 			  </li>
-              
+
 			  <li class="nav-item nav-link">
 				  <%= link_to 'Connexion', new_user_session_path %>
 			  </li>
@@ -54,7 +56,7 @@
           </div>
         </div>
 
-      <!-- Mobile Menu 
+      <!-- Mobile Menu
       <ul class="mobile-menu">
         <li>
           <a class="page-scrool" href="#header-wrap">Home</a>

@@ -6,25 +6,34 @@
     </div>
 </div>
 <br>
-<%= form_tag search_path, method: :get do %>
-    <!-- FORME DE RECHERCHE 
-		<div class="row">
-        <div class="col-md-6">
-            <%= text_field_tag :search, params[:search], placeholder: "Où? Destination, ville, addresse",
-            class:"form-control" %>
-        </div> -->
-        
-		<!-- RECHERCHE PAR DATE
-		<div class="col-md-2">
-            <%= text_field_tag :start_date, params[:start_date], placeholder:"Arrivée", class:"form-control" %>
-        </div>
-        <div class="col-md-2">
-            <%= text_field_tag :end_date, params[:end_date], placeholder:"Départ", class:"form-control" %>
-        </div> -->
-        
-		<div class="col-md-2">
-            <%= submit_tag "Rechercher", class:"btn btn-primary" %>
-        </div>
+<%= search_form_for @search, url: search_path do |f| %>
+    <!-- FORME DE RECHERCHE -->
+    <div class="row">
+      <div class="col-md-4">
+        <%= f.select :countries_eq, [["France","France"],
+          ["Allemagne","Allemagne"],
+          ["Belgique","Belgique"],
+          ["Espagne","Espagne"]],
+          id: "countries",
+          prompt: "Pays/Pays de départ", class: "form-control" %>
+      </div>
+      <div class="col-md-2">
+        <%= f.select :number_of_teammates_eq, [["1 équipier",1], ["2 équipiers",2],
+          ["3 équipiers", 3], ["4 équipiers",4], ["5 équipiers",5], ["6 équipiers",6]],
+          prompt: "A sélectionner...", class: "form-control" %>
+      </div>
+
+    <!-- RECHERCHE PAR DATE  -->
+      <div class="col-md-2">
+        <%= text_field_tag :start_date, params[:start_date], placeholder:"Arrivée", class:"form-control" %>
+      </div>
+      <div class="col-md-2">
+        <%= text_field_tag :end_date, params[:end_date], placeholder:"Départ", class:"form-control" %>
+      </div>
+
+      <div class="col-md-2">
+        <%= submit_tag "Rechercher", class:"btn btn-primary" %>
+      </div>
     </div>
 <% end %>
 <br>
@@ -70,7 +79,7 @@
                         $('#end_date').datepicker("option","minDate", newdate);
                     }
         });
-        
+
         $('#end_date').datepicker({
                     dateFormat: 'dd-mm-yy',
                     monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août',

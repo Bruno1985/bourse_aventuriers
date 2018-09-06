@@ -1,106 +1,106 @@
 <!-- AFFICHAGE SUR GOOGLE MAPS
 <div id="wrapper">
     <div id="sidebar">
-		
-		<div id="widget">
-		                <script>
-		                  function initMap() {
-		                    <% if @arrAdventures.length > 0 %>
-		                        var uluru = {lat: <%= @arrAdventures[0].latitude %>, lng: <%= @arrAdventures[0].longitude %>};
-		                        var map = new google.maps.Map(document.getElementById('widget'), {
-		                          zoom: 13,
-		                          center: uluru
-		                        });
-		                    <% else %>
-		                        var uluru = {lat: 48.866667, lng: 2.333333};
-		                        var map = new google.maps.Map(document.getElementById('widget'), {
-		                          zoom: 4,
-		                          center: uluru
-		                        });
-		                    <% end %>
-                    
-		                    <% @arrAdventures.each do |adventure| %>
-		                    var marker = new google.maps.Marker({
-		                      position: {lat: <%= adventure.latitude %>, lng: <%= adventure.longitude %>},
-		                      map: map,
-		                      title: "<%= adventure.listing_name %>"
-		                    });
-		                    <% end %>
-		                  }
-		                </script>
-		                <script async defer
-		                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu8mJT0DytqjUtgcD4Hp6X75Phpgqy8AM&callback=initMap">
-		                </script>
-		        </div>
+
+    <div id="widget">
+                    <script>
+                      function initMap() {
+                        <% if @adventures_to_array.length > 0 %>
+                            var uluru = {lat: <%= @adventures_to_array[0].latitude %>, lng: <%= @adventures_to_array[0].longitude %>};
+                            var map = new google.maps.Map(document.getElementById('widget'), {
+                              zoom: 13,
+                              center: uluru
+                            });
+                        <% else %>
+                            var uluru = {lat: 48.866667, lng: 2.333333};
+                            var map = new google.maps.Map(document.getElementById('widget'), {
+                              zoom: 4,
+                              center: uluru
+                            });
+                        <% end %>
+
+                        <% @adventures_to_array.each do |adventure| %>
+                        var marker = new google.maps.Marker({
+                          position: {lat: <%= adventure.latitude %>, lng: <%= adventure.longitude %>},
+                          map: map,
+                          title: "<%= adventure.listing_name %>"
+                        });
+                        <% end %>
+                      }
+                    </script>
+                    <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu8mJT0DytqjUtgcD4Hp6X75Phpgqy8AM&callback=initMap">
+                    </script>
+            </div>
     </div> -->
-	
+
         <div class="row">
             <div class="col-md-12">
                 <%= search_form_for @search, url: search_path do |f| %>
-                    
-                    
+
+
                     <div class="row">
                         <div class="col-md-3 select">
                             <div class="form-group">
                                 <label>Activité principale</label>
                                 <%= f.select :main_activity_eq, [["Randonnée/Trek","Randonnée/Trek"],
-							["Trail","Trail"],
+              ["Trail","Trail"],
                             ["Alpinisme","Alpinisme"],
                             ["Escalade","Escalade"],
                             ["Voyage à vélo","Voyage à vélo"],
-							["VTT","VTT"],
+              ["VTT","VTT"],
                             ["Moto","Moto"],
                             ["Voile","Voile"],
                             ["Ski","Ski"],
                             ["Kayak","Kayak"],
                             ["Chiens de traîneau","Chien de traîneau"],
                             ["Voyage à cheval","Voyage à cheval"]],
-							id: "main_activity", 
+              id: "main_activity",
                             prompt: "A sélectionner...", class: "form-control" %>
                             </div>
                         </div>
-                        
+
                         <div class="col-md-3 select">
                             <div class="form-group">
                                 <label>Nombre d'équipiers recherchés</label>
                                <%= f.select :number_of_teammates_eq, [["1 équipier",1], ["2 équipiers",2],
-                               ["3 équipiers", 3], ["4 équipiers",4], ["5 équipiers",5], ["6 équipiers",6]], 
+                               ["3 équipiers", 3], ["4 équipiers",4], ["5 équipiers",5], ["6 équipiers",6]],
                                prompt: "A sélectionner...", class: "form-control" %>
                             </div>
-                        </div>      
-					
-					<div class="col-md-3 select">
-					   <div class="form-group">
-					       <label>Niveau de difficulté</label>
-					        <%= f.select :level_eq, [["Débutant","Débutant"],
-							["Intermédiaire","Intermédiaire"],
-					         ["Avancé","Avancé"],
-					          ["Expert","Expert"]],
-							id: "level", 
-					        prompt: "A sélectionner...", class: "form-control" %>
-					      </div>
-				</div>
-										
-					 <div class="col-md-3 select">
-				  <div class="form-group">
-					                            <label>Pays</label>
-					                            <%= f.select :countries_eq, [["France","France"],
-												["Allemagne","Allemagne"],
-					                            ["Belgique","Belgique"],
-					                            ["Espagne","Espagne"]],
-												id: "countries", 
-					                            prompt: "Pays/Pays de départ", class: "form-control" %>
-					                        </div>
-					                    </div>
+                        </div>
+
+          <div class="col-md-3 select">
+             <div class="form-group">
+                 <label>Niveau de difficulté</label>
+                  <%= f.select :level_eq, [["Débutant","Débutant"],
+              ["Intermédiaire","Intermédiaire"],
+                   ["Avancé","Avancé"],
+                    ["Expert","Expert"]],
+              id: "level",
+                  prompt: "A sélectionner...", class: "form-control" %>
+                </div>
+        </div>
+
+           <div class="col-md-3 select">
+          <div class="form-group">
+                                      <label>Pays</label>
+                                      <%= f.select :countries_eq, [["France","France"],
+                        ["Allemagne","Allemagne"],
+                                      ["Belgique","Belgique"],
+                                      ["Espagne","Espagne"]],
+                        id: "countries",
+                                      prompt: "Pays/Pays de départ", class: "form-control" %>
+                                  </div>
+                              </div>
                     </div>
                     <hr>
-					<div class=row>
-						<div class="col-md-3">
+          <div class=row>
+            <div class="col-md-3">
                     <label>Activités secondaires</label>
-				</div>
-					</div>
-					
-					<div class="row">
+        </div>
+          </div>
+
+          <div class="row">
                         <div class="col-md-3">
                             <%= check_box_tag "q[is_trekking_eq]", true %> Treks/Rando
                         </div>
@@ -150,27 +150,27 @@
                             <%= check_box_tag "q[is_paragliding_eq]", true %> Parapente
                         </div>
                     </div>
-                    
+
                     <br>
                     <br>
-					
-                    
+
+
                     <div class="row">
                         <%= f.submit "Rechercher", class:"btn btn-primary center-block" %>
                     </div>
-                    
-                    
+
+
                 <% end %>
-                
+
                 <hr>
-                
-                
-                
+
+
+
                 <div class="row">
-                    <% if @arrAdventures.empty? %>
+                    <% if @adventures_to_array.empty? %>
                         Aucune annonce ne correspond à votre recherche.
                     <% else %>
-                        <% @arrAdventures.each do |adventure| %>
+                        <% @adventures_to_array.each do |adventure| %>
                         <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading preview">
@@ -185,7 +185,7 @@
                         <% end %>
                     <% end %>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -207,7 +207,7 @@
                         $('#end_date').datepicker("option","minDate", newdate);
                     }
         })
-        
+
         $('#end_date').datepicker({
                     dateFormat: 'dd-mm-yy',
                     monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août',
@@ -221,14 +221,14 @@
         });
     })
 </script>
-	
-		
+
+
 <script>
-	 
-		 $(document).ready(function(){
-	 
-		           $("#sidebar").stick_in_parent({offset_top: 20});
-	 
-		 });
-	 
+
+     $(document).ready(function(){
+
+               $("#sidebar").stick_in_parent({offset_top: 20});
+
+     });
+
 </script>
