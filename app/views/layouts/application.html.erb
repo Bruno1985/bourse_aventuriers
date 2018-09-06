@@ -16,16 +16,15 @@
   </head>
 
   <body>
-	  <div class="wrapper">
-		  <div id="main">
+
 	  	<%= render '/layouts/navigation' %>
 		
+		<div class= "main">
 		<%= render 'shared/message' %>
-	  
  
    <div><%= yield %></div>
+</div>
    <%= render '/layouts/footer' %>
-</div>
-</div>
+
   </body>
 </html>

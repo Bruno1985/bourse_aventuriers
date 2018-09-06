@@ -40,6 +40,10 @@
  	font-weight: 300;
  	font-size: 16px;
  }
+ 
+ .main {
+	 margin-top: 50px;
+ }
 
  h1, h2, h3, h4, h5, h6 {
  	font-weight: 100;
@@ -76,9 +80,44 @@
 .clearfix {
  	width: 100%;
  }
+ 
+ /* NAVBAR  */
+
+ .navbar {
+	 font-family: Roboto;
+	   font-size: 12px;
+	   font-weight: bold;
+	   font-style: normal;
+	   font-stretch: normal;
+	   line-height: normal;
+	   letter-spacing: 0.5px;
+	   text-align: center;
+	   color: #000000;
+	   background-color: white;
+	   
+ }
+ 
+ .navbar-brand {
+	 text-transform: uppercase;
+	 font-family: Montserrat;
+	   font-size: 14px;
+	   font-weight: 800;
+	   font-style: normal;
+	   font-stretch: normal;
+	   line-height: normal;
+	   letter-spacing: 0.6px;
+	   color: #000000;
+	 
+ }
+ 
+#navbar-btn {
+	background-color: #ffcc00;
+}
+ 
+ /* FIN NAVBAR  */
+ 
 
  section {
- 	padding: 60px 0;
  }
 
  section h1 {
@@ -177,6 +216,8 @@
 	height: 576px;
 	object-fit: contain;
 	background-size:cover;
+	max-width: 100%;
+	max-height:100%;
 }
 
 .main-part-section-1-img .container h1 {
@@ -194,7 +235,7 @@
 }
 
 .main-part-section-1-img .container p {
-	padding-top: 14px;
+	padding-top: 0px;
 	text-align:center;
 	font-family: Roboto;
 	  font-size: 24px;
@@ -276,11 +317,17 @@
 	line-height: 0px;
 	margin: 0 220px;
 	position: relative;
-	bottom:100px;
+	bottom:50px;
 	height: 200px;
 	background-color: #ffffff;
 	box-shadow: 0 12px 14px 0 rgba(0, 0, 0, 0.1);
 	padding: 30px 10px 30px 10px;
+
+}
+
+.section-1 {
+	max-width: 100%;
+	max-height: 100%;
 }
 
 .main-part-section-1-search .title {
@@ -301,7 +348,7 @@
 	width: 180px;
 	height: 30px;
 	font-size: 12px;
-	font-weight: strong;
+	font-weight: bold;
 	background-color: #ffcc00;
 	border: none;
 	color: #000000;
@@ -309,7 +356,7 @@
 
 .text-center {
 	font-family: Roboto;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 
@@ -347,6 +394,8 @@
 
 /* Section-2 */
 
+
+
 .section-2 hr {
 	width: 146px;
 	height: 6px;
@@ -369,7 +418,6 @@
 
 .section-3-title {
 	line-height: 0px;
-	margin-bottom: 70px;
 }
 
 .section-3 h1 {
@@ -400,6 +448,18 @@
   	  vertical-align: middle;
 }
 
+.section-3-selection-p {
+	font-family: Roboto;
+	  font-size: 14px;
+	  font-weight: normal;
+	  font-style: normal;
+	  font-stretch: normal;
+	  line-height: 2;
+	  letter-spacing: 1px;
+	  color: #555555;
+  	  display: table-cell; /* comportement visuel de cellule */
+  	  vertical-align: middle;
+}
 
 .section-3-title button {
 	width: 160px;
@@ -486,8 +546,8 @@
 .box > .icon > .image { position: relative; z-index: 2; margin: auto; width: 88px; height: 88px; border: 8px solid white; line-height: 88px; border-radius: 50%; background: #ffcc00; vertical-align: middle; }
 .box > .icon:hover > .image { background: #333; }
 .box > .icon > .image > i { font-size: 36px !important; color: #fff !important; }
-.box > .icon:hover > .image > i { color: white !important; }
-.box > .icon > .info { margin-top: -24px; background: rgba(0, 0, 0, 0.04); border: 1px solid #e0e0e0; padding: 15px 0 10px 0; display: inline-block; height:200px;}
+.box > .icon:hover > .image .img-thumbnail > i { color: white !important; }
+.box > .icon > .info { margin-top: -24px; background: rgba(0, 0, 0, 0.04); border: 1px solid #e0e0e0; padding: 15px 0 10px 0; display: inline-block; height:170px;}
 .box > .icon:hover > .info { background: rgba(0, 0, 0, 0.04); border-color: #e0e0e0; color: white; }
 .box > .icon > .info > h3.title { font-family: "Roboto",sans-serif !important; font-size: 16px; color: #222; font-weight: 500; }
 .box > .icon > .info > p { font-family: "Roboto",sans-serif !important; font-size: 13px; color: #666; line-height: 1.5em; margin: 20px;}
@@ -495,6 +555,8 @@
 .box > .icon > .info > .more a { font-family: "Roboto",sans-serif !important; font-size: 12px; color: #222; line-height: 12px; text-transform: uppercase; text-decoration: none; }
 .box > .icon:hover > .info > .more > a { color: #fff; padding: 6px 8px; background-color: #ffcc00; }
 .box .space { height: 30px; }
+
+.img-thumbnail {z-index: 1;}
   
  /* Page de modification du profil  */
  

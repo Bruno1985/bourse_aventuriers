@@ -15,7 +15,7 @@
 			<!-- DEBUT PARTIE RECHERCHE -->
 			<div class="main-part-section-1-search">
 			 <div class="col-md-12 title">
-				 <h1>C’est parti pour l’aventure</h1>
+				 <h1>C’est parti !</h1>
 				 <br>
 				 <p>Nos utilisateurs n’attendent que vous pour partir à l’aventure, jettez un oeil aux dernières propositions.</p>
 			 	</div>
@@ -92,32 +92,45 @@
 		</div>
 		<!-- FIN PARTIE IMAGE ET RECHERCHE -->
 		<!-- DEBUT PARTIE AFFICHAGE RESULTATS -->
-		<div class="second-part-section-1">
-            <div class="row">
+		<div class="container">
+            <div class="row section-3-selection">
                 <% if @arrAdventures.empty? %>
                     Aucune annonce ne correspond à votre recherche.
                 <% else %>
-				<%= paginate @adventures %>
-                    <% @arrAdventures.each do |adventure| %>
-                    <div class="col-md-3">
-                        <div class="panel panel-default">
-                            <div class="panel-heading preview img-responsive">
-								<% if (adventure.photos.present?) %>
-                                <%= image_tag adventure.photos[0].image.url(:medium) if adventure.photos.length > 0 %>
-								<%else%>
-								<%= image_tag 'default_adventure_pic.jpeg' %>
-								<%end%>
-                            </div>
-                            <div class="panel-body search-pics">
-                                <%= image_tag avatar_url(adventure.user), class:"img-circle avatar-small" %>
-                                <%= link_to adventure.listing_name, adventure %>
-                            </div>
-                        </div>
+                    
+					<% @arrAdventures.each do |adventure| %>
+                    <div class="col-lg-3 col-md-6 col-sm-12 box">
+                        <a class="thumbnail panel-heading preview img-responsive">
+						 <% if (adventure.photos.present?) %>
+						                     <%= image_tag adventure.photos[0].image.url(:medium) if adventure.photos.length > 0 %>
+						 <%else%>
+						 <%= image_tag 'default_adventure_pic.jpeg' %>
+						 <%end%>
+                        </a>
+                        <h3 class="adventure-name"><%= adventure.listing_name %> </h3>
+                        <p><%= adventure.main_activity%>
+					 	<br>
+						<%= adventure.level%>
+						<br>
+						<%= adventure.duration %>&nbspjours
+						<br>
+						<%= adventure.address%>
+						<br>
+					 </p>
+					 <br />
+                        <a> <%= link_to "Découvrir", adventure_path(adventure), class:"btn btn-primary btn-sm"%></a>
+				
                     </div>
+					
                     <% end %>
+					<div class="row section-3-selection-p">
+					<p><%= paginate @adventures, window: 2 %></p>
+				</div>
                 <% end %>
+				
             </div>
 		</div>
+
 		<!-- FIN PARTIE AFFICHAGE RESULTATS -->
 	</section>
 	<!-- FIN SECTION_1 -->
@@ -138,11 +151,6 @@
 	  						<p>
 								Faites connaître votre prochaine aventure pour trouver des compagnons de route.
 	  						</p>
-	  						<div class="more">
-	  							<a href="#" title="Title Link">
-	  								c'est parti <i class="fa fa-angle-double-right"></i>
-	  							</a>
-	  						</div>
 	  					</div>
 	  				</div>
 	  				<div class="space"></div>
@@ -158,11 +166,6 @@
 	      					<p>
 								Recherchez votre prochaine aventure parmi les annonces.
 	  						</p>
-	  						<div class="more">
-	  							<a href="#" title="Title Link">
-	  								c'est parti<i class="fa fa-angle-double-right"></i>
-	  							</a>
-	  						</div>
 	  					</div>
 	  				</div>
 	  				<div class="space"></div>
@@ -177,11 +180,6 @@
 	  						<h3 class="title">Inspirez-vous</h3>
 	      					<p>
 	  							Des idées de parcours et de projets dans toutes les disciplines, pour tous les niveaux.</p>
-	  						<div class="more">
-	  							<a href="#" title="Title Link">
-	  								c'est parti <i class="fa fa-angle-double-right"></i>
-	  							</a>
-	  						</div>
 	  					</div>
 	  				</div>
 	  				<div class="space"></div>
@@ -193,7 +191,7 @@
 	</section>
 	<!-- FIN SECTION-2 -->
 	<!-- DEBUT SECTION-3 -->
-	<section class="section-3">
+	<!-- <section class="section-3">
 		 <div class="container">
 			 <div class="row section-3-title">
 				 <div class="col-md-9">
@@ -255,16 +253,11 @@
 					      	<div class="col-xs-12 col-sm-6 col-lg-4">
 					  			<div class="box">							
 					  				<div class="icon">
-					  					<%= image_tag 'imago.jpeg', class:"img-thumbnail avatar-large" %>
+					  					<%= image_tag 'imago.jpeg', class:"image" %>
 					  					<div class="info">
 					  						<h3 class="title">IMAGO</h3>
 					  						<p>
 												Imago, l'incubateur d'aventures, accompagne les néo-aventuriers pour faire éclore leurs projets d’explorations sportives, écologiques et solidaires.</p>
-					  						<div class="more">
-					  							<a href="#" title="Title Link">
-					  								découvrir <i class="fa fa-angle-double-right"></i>
-					  							</a>
-					  						</div>
 					  					</div>
 					  				</div>
 					  				<div class="space"></div>
@@ -274,16 +267,11 @@
 					          <div class="col-xs-12 col-sm-6 col-lg-4">
 					  			<div class="box">							
 					  				<div class="icon">
-					  					<%= image_tag 'chilowe.png', class:"img-thumbnail avatar-large" %>
+					  					<%= image_tag 'chilowe.png', class:"image" %>
 					  					<div class="info">
 					  						<h3 class="title">CHILOWE</h3>
 					      					<p>
-												Chilowé, une newsletter, des évènements et bientôt une série de guides locaux, qui répertorient les meilleures idées de microaventures à vivre autour de chez soi.</p>
-					  						<div class="more">
-					  							<a href="#" title="Title Link">
-					  								découvrir<i class="fa fa-angle-double-right"></i>
-					  							</a>
-					  						</div>
+												Chilowé, une newsletter, des évènements et une série de guides, qui répertorient les meilleures idées de microaventures à vivre autour de chez soi.</p>
 					  					</div>
 					  				</div>
 					  				<div class="space"></div>
@@ -293,15 +281,10 @@
 					          <div class="col-xs-12 col-sm-6 col-lg-4">
 					  			<div class="box">							
 					  				<div class="icon">
-					  					<%= image_tag 'explora.png', class:"img-thumbnail avatar-large" %>
+					  					<%= image_tag 'explora.png', class:"image" %>
 					  					<div class="info">
 					  						<h3 class="title">EXPLORA PROJECT</h3>
 					      					<p>Explora Project est une agence de voyage d’aventure spécialisée dans les expéditions extrêmes sans guide («Self-Guided Extreme Expeditions»).</p>
-					  						<div class="more">
-					  							<a href="#" title="Title Link">
-					  								découvrir <i class="fa fa-angle-double-right"></i>
-					  							</a>
-					  						</div>
 					  					</div>
 					  				</div>
 					  				<div class="space"></div>

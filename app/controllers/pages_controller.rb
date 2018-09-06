@@ -17,7 +17,7 @@ class PagesController < ApplicationController
                   end
       
                   @search = @adventures_main_activity.ransack(params[:q])
-                  @adventures = @search.result.page(params[:page]).per(2)
+                  @adventures = @search.result.page(params[:page]).per(4)
       
                   @arrAdventures = @adventures.to_a
                 end
