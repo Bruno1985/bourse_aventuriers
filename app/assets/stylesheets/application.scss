@@ -32,29 +32,7 @@
  
  /* Global  */
  
- header.smaller {
- 	height: 75px;
- }
 
- header.smaller h1#logo {
- 	width: 150px;
- 	height: 75px;
- 	line-height: 55px;
- 	font-size: 55px;
- 	margin: 0;
- }
-
- header.smaller nav a {
- 	line-height: 75px;
- }
-
- *,
- *:before,
- *:after {
- 	-webkit-box-sizing: border-box;
- 	-moz-box-sizing: border-box;
- 	box-sizing: border-box;
- }
 
  body {
  	color: #505050;
@@ -125,90 +103,6 @@
 	 padding: 0 0 0 0;
  }
 
- header {
- 	width: 100%;
- 	height: 80px;
- 	overflow: hidden;
- 	position: fixed;
- 	top: 0;
- 	left: 0;
- 	z-index: 999;
-   border-bottom:solid 0.5em #f4f4f4;
- 	background-color: #ffffff;
- 	transition: height 0.3s;
- }
-
- header h1#logo {
- 	display: inline-block;
- 	line-height:80px;
-    margin: 0;
-    padding:0 1em;
-    background-color:none;
- 	float: left;
- 	font-family: Montserrat;
-	text-transform:uppercase;
- 	font-size: 25px;
- 	color: #000000;
- 	font-weight: 400;
- 	-webkit-transition: all 0.3s;
- 	-moz-transition: all 0.3s;
- 	-ms-transition: all 0.3s;
- 	-o-transition: all 0.3s;
- 	transition: all 0.3s;
- }
-
- header nav {
- 	display: inline-block;
- 	float: right;
-	font-family: Roboto;
- }
-
- header nav a {
- 	line-height: 80px;
- 	margin-left: 20px;
- 	color: #000000;
- 	font-weight: 300;
- 	font-size: 15px;
-	font-family:Roboto;
- 	-webkit-transition: all 0.3s;
- 	-moz-transition: all 0.3s;
- 	-ms-transition: all 0.3s;
- 	-o-transition: all 0.3s;
- 	transition: all 0.3s;
- }
- 
- header nav button {
-  	line-height: 80px;
-	text-align:center;
-	padding: 0;
-  	color: #000000;
-  	font-weight: 300;
-  	font-size: 15px;
- 	font-family:Roboto;
-  	-webkit-transition: all 0.3s;
-  	-moz-transition: all 0.3s;
-  	-ms-transition: all 0.3s;
-  	-o-transition: all 0.3s;
-  	transition: all 0.3s;
- 	
- }
-
- header nav a:hover {
- 	color: #fd5559;
- }
-
- header.smaller {
- 	height: 60px;
- }
-
- header.smaller h1#logo {
- 	line-height: 60px;
- 	font-size: 14px;
- }
-
- header.smaller nav a {
- 	line-height: 75px;
- }
 
  footer {
  	background-color: #3c3c3c;
@@ -267,70 +161,6 @@
  	height: 0;
  }
 
- @media all and (max-width: 760px) {
- 	header h1#logo {
- 		display: block;
- 		float: none;
- 		margin: 0 auto;
- 		height: 100px;     
- 		line-height: 80px;
- 		text-align: center;
- 	}
-
- 	header nav {
- 		display: block;
- 		float: none;
- 		height: 50px;
- 		text-align: center;
- 		margin: 0 auto;
- 	}
-
- 	header nav a {
- 		line-height: 50px;
- 		margin: 0 10px;
- 	}
-
- 	header.smaller {
- 		height: 75px;
- 	}
-
- 	header.smaller h1#logo {
- 		height: 40px;
- 		line-height: 40px;
- 		font-size: 30px;
-      width:100%;
- 	}
-
- 	header.smaller nav {
- 		height: 35px;
- 	}
-
- 	header.smaller nav a {
- 		line-height: 35px;
- 	}
-   footer div.col {
-     width:100%;
-     display:inline-block;
-     vertical-align: top;
-   }
-   footer ul li {
-     display:inline-block;
-     margin:0 0.5em;
-     float:left;
-   }
-
- }
-
- @media all and (max-width: 600px) {
- 	.container {
- 		width: 100%;
- 	}
-
- 	footer a {
- 		display: block;
- 	}
- }
-
 
   
 .img-responsive {
@@ -341,7 +171,7 @@
  
 /* Homepage */
 
-.main-part-homepage {
+.main-part-section-1-img {
 	background-image: url("/assets/rectangle-2@3x.jpg");
 	width: 1440px;
 	height: 576px;
@@ -349,7 +179,7 @@
 	background-size:cover;
 }
 
-.main-part-homepage h1 {
+.main-part-section-1-img .container h1 {
 	padding-top: 206px;
 	text-transform: uppercase;
 	  font-family: Montserrat;
@@ -363,7 +193,7 @@
 	  color: #ffcc00;
 }
 
-.main-part-homepage p {
+.main-part-section-1-img .container p {
 	padding-top: 14px;
 	text-align:center;
 	font-family: Roboto;
@@ -388,6 +218,9 @@
 	  letter-spacing: 0.8px;
 	  color: #000000;
 }
+
+
+
 
 /* Second Part Homepage */
 
@@ -439,6 +272,78 @@
   	  vertical-align: middle;
 }
 
+.main-part-section-1-search {
+	line-height: 0px;
+	margin: 0 220px;
+	position: relative;
+	bottom:100px;
+	height: 200px;
+	background-color: #ffffff;
+	box-shadow: 0 12px 14px 0 rgba(0, 0, 0, 0.1);
+	padding: 30px 10px 30px 10px;
+}
+
+.main-part-section-1-search .title {
+	margin-bottom:20px;
+}
+
+.search-forms {
+	font-family: Roboto;
+}
+
+.search-forms select {
+	font-size: 12px;
+	width: 180px;
+	height: 30px;
+}
+
+.search-forms .btn {
+	width: 180px;
+	height: 30px;
+	font-size: 12px;
+	font-weight: strong;
+	background-color: #ffcc00;
+	border: none;
+	color: #000000;
+}
+
+.text-center {
+	font-family: Roboto;
+	font-size: 16px;
+}
+
+
+.main-part-section-1-search h1 {
+	text-transform: uppercase;
+	font-family: Montserrat;
+	  font-size: 20px;
+	  font-weight: bold;
+	  font-style: normal;
+	  font-stretch: normal;
+	  line-height: normal;
+	  letter-spacing: 0.8px;
+	  color: #000000;
+	  margin-bottom:0;
+  	  display: table-cell; /* comportement visuel de cellule */
+  	  vertical-align: middle;
+}
+
+.main-part-section-1-search p {
+	font-family: Roboto;
+	  font-size: 14px;
+	  font-weight: normal;
+	  font-style: normal;
+	  font-stretch: normal;
+	  line-height: 2;
+	  letter-spacing: 1px;
+	  color: #555555;
+  	  display: table-cell; /* comportement visuel de cellule */
+  	  vertical-align: middle;
+}
+
+.container-1 {
+	background-color: red;
+}
 
 /* Section-2 */
 
@@ -538,6 +443,7 @@
 
 .box {
 	box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.1);
+	display: inline-block;
 }
 
 .section-3-selection .btn {
@@ -581,7 +487,7 @@
 .box > .icon:hover > .image { background: #333; }
 .box > .icon > .image > i { font-size: 36px !important; color: #fff !important; }
 .box > .icon:hover > .image > i { color: white !important; }
-.box > .icon > .info { margin-top: -24px; background: rgba(0, 0, 0, 0.04); border: 1px solid #e0e0e0; padding: 15px 0 10px 0; }
+.box > .icon > .info { margin-top: -24px; background: rgba(0, 0, 0, 0.04); border: 1px solid #e0e0e0; padding: 15px 0 10px 0; display: inline-block; height:200px;}
 .box > .icon:hover > .info { background: rgba(0, 0, 0, 0.04); border-color: #e0e0e0; color: white; }
 .box > .icon > .info > h3.title { font-family: "Roboto",sans-serif !important; font-size: 16px; color: #222; font-weight: 500; }
 .box > .icon > .info > p { font-family: "Roboto",sans-serif !important; font-size: 13px; color: #666; line-height: 1.5em; margin: 20px;}
@@ -701,7 +607,7 @@
  
    /* Style formulaire saisie Adventure  */
  
-   label {
+   .new-adventure label {
  
     color: #565a5c;
  
@@ -714,7 +620,7 @@
     }
  
   
-   select {
+   .new-adventure select {
  
     color: #565a5c;
  
@@ -737,7 +643,7 @@
     }
  
   
-   .select:before {
+   .new-adventure select:before {
  
     content: '\25bc';
  
@@ -756,7 +662,7 @@
     }
  
   
-   input[type="checkbox"] {
+   .new-adventure input[type="checkbox"] {
  
     height: 1.25em;
  
@@ -781,7 +687,7 @@
     }
  
   
-   input[type="checkbox"]:checked:before {
+   .new-adventure input[type="checkbox"]:checked:before {
  
     content: "\2713";
  

@@ -26,5 +26,5 @@ Rails.application.routes.draw do
   get '/terms' => 'pages#terms'
   get '/privatepolicy' => 'pages#policy'
   
-  root 'pages#home'
+  root 'pages#search'
 end

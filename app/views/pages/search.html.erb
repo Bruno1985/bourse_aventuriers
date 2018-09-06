@@ -1,219 +1,320 @@
-<!-- AFFICHAGE SUR GOOGLE MAPS
-<div id="wrapper">
-    <div id="sidebar">
-		
-		<div id="widget">
-		                <script>
-		                  function initMap() {
-		                    <% if @arrAdventures.length > 0 %>
-		                        var uluru = {lat: <%= @arrAdventures[0].latitude %>, lng: <%= @arrAdventures[0].longitude %>};
-		                        var map = new google.maps.Map(document.getElementById('widget'), {
-		                          zoom: 13,
-		                          center: uluru
-		                        });
-		                    <% else %>
-		                        var uluru = {lat: 48.866667, lng: 2.333333};
-		                        var map = new google.maps.Map(document.getElementById('widget'), {
-		                          zoom: 4,
-		                          center: uluru
-		                        });
-		                    <% end %>
-                    
-		                    <% @arrAdventures.each do |adventure| %>
-		                    var marker = new google.maps.Marker({
-		                      position: {lat: <%= adventure.latitude %>, lng: <%= adventure.longitude %>},
-		                      map: map,
-		                      title: "<%= adventure.listing_name %>"
-		                    });
-		                    <% end %>
-		                  }
-		                </script>
-		                <script async defer
-		                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu8mJT0DytqjUtgcD4Hp6X75Phpgqy8AM&callback=initMap">
-		                </script>
-		        </div>
-    </div> -->
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-		<div class="container">
-        Rechercher une aventure
-	</div>
-</div>
-</div>
-
-
-
-
-<div class="container">
-<section id="search-params-section">
-        <div class="row">
-            <div class="col-md-12">
-                <%= search_form_for @search, url: search_path do |f| %>
-                    
-                    
-                    <div class="row">
-                        <div class="col-md-3 select">
-                            <div class="form-group">
-                                <label>Activité principale</label>
-                                <%= f.select :main_activity_eq, [["Randonnée/Trek","Randonnée/Trek"],
-							["Trail","Trail"],
-                            ["Alpinisme","Alpinisme"],
-                            ["Escalade","Escalade"],
-                            ["Voyage à vélo","Voyage à vélo"],
-							["VTT","VTT"],
-                            ["Moto","Moto"],
-                            ["Voile","Voile"],
-                            ["Ski","Ski"],
-                            ["Kayak","Kayak"],
-                            ["Chiens de traîneau","Chien de traîneau"],
-                            ["Voyage à cheval","Voyage à cheval"]],
-							id: "main_activity", 
-                            prompt: "A sélectionner...", class: "form-control" %>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-3 select">
-                            <div class="form-group">
-                                <label>Nombre d'équipiers</label>
-                               <%= f.select :number_of_teammates_eq, [["1 équipier",1], ["2 équipiers",2],
-                               ["3 équipiers", 3], ["4 équipiers",4], ["5 équipiers",5], ["6 équipiers",6]], 
-                               prompt: "A sélectionner...", class: "form-control" %>
-                            </div>
-                        </div>      
-					
-					<div class="col-md-3 select">
-					   <div class="form-group">
-					       <label>Niveau de difficulté</label>
-					        <%= f.select :level_eq, [["Débutant","Débutant"],
-							["Intermédiaire","Intermédiaire"],
-					         ["Avancé","Avancé"],
-					          ["Expert","Expert"]],
-							id: "level", 
-					        prompt: "A sélectionner...", class: "form-control" %>
-					      </div>
-				</div>
-										
-					 <div class="col-md-3 select">
-				  <div class="form-group">
-					                            <label>Pays</label>
-					                            <%= f.select :countries_eq, [["Afghanistan","Afghanistan"],["Afrique du Sud","Afrique du Sud"],["Albanie","Albanie"],["Algérie","Algérie"],["Allemagne","Allemagne"],["Andorre","Andorre"],["Angola","Angola"],["Antigua-et-Barbuda","Antigua-et-Barbuda"],["Arabie Saoudite","Arabie Saoudite"],["Argentine","Argentine"],["Arménie","Arménie"],["Australie","Australie"],["Autriche","Autriche"],["Azerbaïdjan","Azerbaïdjan"],["Bahamas","Bahamas"],["Bahreïn","Bahreïn"],["Bangladesh","Bangladesh"],["Barbade","Barbade"],["Belgique","Belgique"],["Belize","Belize"],["Bénin","Bénin"],["Bhoutan","Bhoutan"],["Biélorussie","Biélorussie"],["Birmanie","Birmanie"],["Bolivie","Bolivie"],["Bosnie-Herzégovine","Bosnie-Herzégovine"],["Botswana","Botswana"],["Brésil","Brésil"],["Brunei","Brunei"],["Bulgarie","Bulgarie"],["Burkina Faso","Burkina Faso"],["Burundi","Burundi"],["Cambodge","Cambodge"],["Cameroun","Cameroun"],["Canada","Canada"],["Cap-Vert","Cap-Vert"],["Chili","Chili"],["Chine","Chine"],["Chypre","Chypre"],["Colombie","Colombie"],["Comores","Comores"],["Congo","Congo"],["Corée du Nord","Corée du Nord"],["Corée du Sud","Corée du Sud"],["Costa Rica","Costa Rica"],["Côte d'Ivoire","Côte d'Ivoire"],["Croatie","Croatie"],["Cuba","Cuba"],["Danemark","Danemark"],["Djibouti","Djibouti"],["Dominique","Dominique"],["Egypte","Egypte"],["Emirats Arabes Unis","Emirats Arabes Unis"],["Equateur","Equateur"],["Erythrée","Erythrée"],["Espagne","Espagne"],["Estonie","Estonie"],["Etats-Unis","Etats-Unis"],["Ethiopie","Ethiopie"],["Fidji","Fidji"],["Finlande","Finlande"],["France","France"],["Gabon","Gabon"],["Gambie","Gambie"],["Géorgie","Géorgie"],["Ghana","Ghana"],["Grèce","Grèce"],["Grenade","Grenade"],["Guatemala","Guatemala"],["Guinée","Guinée"],["Guinée équatoriale","Guinée équatoriale"],["Guinée-Bissau","Guinée-Bissau"],["Guyana","Guyana"],["Haïti","Haïti"],["Honduras","Honduras"],["Hongrie","Hongrie"],["Île Maurice","Île Maurice"],["Inde","Inde"],["Indonésie","Indonésie"],["Irak","Irak"],["Iran","Iran"],["Irlande","Irlande"],["Islande","Islande"],["Israël","Israël"],["Italie","Italie"],["Jamaïque","Jamaïque"],["Japon","Japon"],["Jordanie","Jordanie"],["Kazakhstan","Kazakhstan"],["Kenya","Kenya"],["Kirghizistan","Kirghizistan"],["Kiribati","Kiribati"],["Kosovo","Kosovo"],["Koweït","Koweït"],["Laos","Laos"],["Lesotho","Lesotho"],["Lettonie","Lettonie"],["Liban","Liban"],["Liberia","Liberia"],["Libye","Libye"],["Liechtenstein","Liechtenstein"],["Lituanie","Lituanie"],["Luxembourg","Luxembourg"],["Macédoine","Macédoine"],["Madagascar","Madagascar"],["Malaisie","Malaisie"],["Malawi","Malawi"],["Maldives","Maldives"],["Mali","Mali"],["Malte","Malte"],["Maroc","Maroc"],["Marshall","Marshall"],["Mauritanie","Mauritanie"],["Mexique","Mexique"],["Micronésie","Micronésie"],["Moldavie","Moldavie"],["Monaco","Monaco"],["Mongolie","Mongolie"],["Monténégro","Monténégro"],["Namibie","Namibie"],["Nauru","Nauru"],["Népal","Népal"],["Nicaragua","Nicaragua"],["Niger","Niger"],["Nigeria","Nigeria"],["Norvège","Norvège"],["Nouvelle-Zélande","Nouvelle-Zélande"],["Oman","Oman"],["Ouganda","Ouganda"],["Ouzbékistan","Ouzbékistan"],["Pakistan","Pakistan"],["Palaos","Palaos"],["Palestine","Palestine"],["Panama","Panama"],["Papouasie-Nouvelle-Guinée","Papouasie-Nouvelle-Guinée"],["Paraguay","Paraguay"],["Pays-Bas","Pays-Bas"],["Pérou","Pérou"],["Philippines","Philippines"],["Pologne","Pologne"],["Portugal","Portugal"],["Qatar","Qatar"],["République Centrafricaine","République Centrafricaine"],["République Démocratique du Congo","République Démocratique du Congo"],["République Dominicaine","République Dominicaine"],["République Tchèque","République Tchèque"],["Roumanie","Roumanie"],["Royaume-Uni","Royaume-Uni"],["Russie","Russie"],["Rwanda","Rwanda"],["Saint-Kitts-et-Nevis","Saint-Kitts-et-Nevis"],["Saint-Marin","Saint-Marin"],["Saint-Vincent-et-les-Grenadines","Saint-Vincent-et-les-Grenadines"],["Sainte-Lucie","Sainte-Lucie"],["Salomon","Salomon"],
-												["Salvador","Salvador"],
-							["Samoa","Samoa"],["São Tomé et Príncipe","São Tomé et Príncipe"],["Sénégal","Sénégal"],["Serbie","Serbie"],["Seychelles","Seychelles"],["Sierra Leone","Sierra Leone"],["Singapour","Singapour"],["Slovaquie","Slovaquie"],["Slovénie","Slovénie"],["Somalie","Somalie"],["Soudan","Soudan"],["Soudan du Sud","Soudan du Sud"],["Sri Lanka","Sri Lanka"],["Suède","Suède"],["Suisse","Suisse"],["Suriname","Suriname"],["Swaziland","Swaziland"],["Syrie","Syrie"],["Tadjikistan","Tadjikistan"],["Taïwan","Taïwan"],["Tanzanie","Tanzanie"],["Tchad","Tchad"],["Thaïlande","Thaïlande"],["Timor-Oriental","Timor-Oriental"],["Togo","Togo"],["Tonga","Tonga"],["Trinité-et-Tobago","Trinité-et-Tobago"],["Tunisie","Tunisie"],["Turkménistan","Turkménistan"],["Turquie","Turquie"],["Tuvalu","Tuvalu"],["Ukraine","Ukraine"],["Uruguay","Uruguay"],["Vanuatu","Vanuatu"],["Vatican","Vatican"],["Venezuela","Venezuela"],["Viêt Nam","Viêt Nam"],["Yémen","Yémen"],["Zambie","Zambie"],["Zimbabwe","Zimbabwe"]],
-												id: "countries", 
-					                            prompt: "Pays/Pays de départ", class: "form-control" %>
-					                        </div>
-					                    </div>
-                    </div>
-                    <hr>
-					<div class=row>
-						<div class="col-md-3">
-                    <label>Activités secondaires</label>
-				</div>
+<!-- DEBUT PAGE -->
+<div class="content">
+	<!-- DEBUT SECTION-1 -->
+	<section class="section-1">
+		<!-- DEBUT PARTIE IMAGE ET RECHERCHE -->
+		<div class="main-part-section-1">
+			<!-- DEBUT PARTIE IMAGE -->
+			<div class="main-part-section-1-img">
+				<div class="container">
+	            <h1>La Bourse aux Aventures</h1>
+	            <p>Trouvez des partenaires pour votre prochaine aventure</p>
+	        	</div>
+			</div>
+			<!-- FIN PARTIE IMAGE -->
+			<!-- DEBUT PARTIE RECHERCHE -->
+			<div class="main-part-section-1-search">
+			 <div class="col-md-12 title">
+				 <h1>C’est parti pour l’aventure</h1>
+				 <br>
+				 <p>Nos utilisateurs n’attendent que vous pour partir à l’aventure, jettez un oeil aux dernières propositions.</p>
+			 	</div>
+				<div class="col-md-12">
+             <%= search_form_for @search, url: search_path do |f| %>
+                
+                 <!-- Début ligne choix critères principaux-->
+                 		<div class="row search-forms">
+                     		<div class="col-md-3 col-sm-6 col-xs-12 search-forms-item">
+                         		<div class="form-group">
+                             		<label></label>
+									
+                             		<%= f.select :main_activity_eq,
+									[["Randonnée/Trek","Randonnée/Trek"],
+ 									["Trail","Trail"],
+                         		   ["Alpinisme","Alpinisme"],
+                         		  ["Escalade","Escalade"],
+                         		 ["Voyage à vélo","Voyage à vélo"],
+ 								 ["VTT","VTT"],
+                         		["Moto","Moto"],
+                         	   ["Voile","Voile"],
+                         	  ["Ski","Ski"],
+                         	 ["Kayak","Kayak"],
+                         	["Chiens de traîneau","Chien de traîneau"],
+                         	["Voyage à cheval","Voyage à cheval"]],
+ 						id: "main_activity", 
+                         prompt: "Activité Principale", class: "form-control" %>
+                         		</div>
+                     		</div>
+                          
+				
+ 							<div class="col-md-3 col-sm-6 col-xs-12 search-forms-item">
+ 				   			 	<div class="form-group">
+ 				       			 <label></label>
+								 
+ 				        <%= f.select :level_eq, [["Débutant","Débutant"],
+ 						["Intermédiaire","Intermédiaire"],
+ 				         ["Avancé","Avancé"],
+ 				          ["Expert","Expert"]],
+ 						id: "level", 
+ 				        prompt: "Difficulté", class: "form-control" %>
+ 				      			</div>
+ 							</div>
+									
+ 				 		   	<div class="col-md-3 col-sm-6 col-xs-12 search-forms-item">
+ 			  				  <div class="form-group">
+ 				                 <label></label>
+ 				                            <%= f.select :countries_eq, [["Afghanistan","Afghanistan"],["Afrique du Sud","Afrique du Sud"],["Albanie","Albanie"],["Algérie","Algérie"],["Allemagne","Allemagne"],["Andorre","Andorre"],["Angola","Angola"],["Antigua-et-Barbuda","Antigua-et-Barbuda"],["Arabie Saoudite","Arabie Saoudite"],["Argentine","Argentine"],["Arménie","Arménie"],["Australie","Australie"],["Autriche","Autriche"],["Azerbaïdjan","Azerbaïdjan"],["Bahamas","Bahamas"],["Bahreïn","Bahreïn"],["Bangladesh","Bangladesh"],["Barbade","Barbade"],["Belgique","Belgique"],["Belize","Belize"],["Bénin","Bénin"],["Bhoutan","Bhoutan"],["Biélorussie","Biélorussie"],["Birmanie","Birmanie"],["Bolivie","Bolivie"],["Bosnie-Herzégovine","Bosnie-Herzégovine"],["Botswana","Botswana"],["Brésil","Brésil"],["Brunei","Brunei"],["Bulgarie","Bulgarie"],["Burkina Faso","Burkina Faso"],["Burundi","Burundi"],["Cambodge","Cambodge"],["Cameroun","Cameroun"],["Canada","Canada"],["Cap-Vert","Cap-Vert"],["Chili","Chili"],["Chine","Chine"],["Chypre","Chypre"],["Colombie","Colombie"],["Comores","Comores"],["Congo","Congo"],["Corée du Nord","Corée du Nord"],["Corée du Sud","Corée du Sud"],["Costa Rica","Costa Rica"],["Côte d'Ivoire","Côte d'Ivoire"],["Croatie","Croatie"],["Cuba","Cuba"],["Danemark","Danemark"],["Djibouti","Djibouti"],["Dominique","Dominique"],["Egypte","Egypte"],["Emirats Arabes Unis","Emirats Arabes Unis"],["Equateur","Equateur"],["Erythrée","Erythrée"],["Espagne","Espagne"],["Estonie","Estonie"],["Etats-Unis","Etats-Unis"],["Ethiopie","Ethiopie"],["Fidji","Fidji"],["Finlande","Finlande"],["France","France"],["Gabon","Gabon"],["Gambie","Gambie"],["Géorgie","Géorgie"],["Ghana","Ghana"],["Grèce","Grèce"],["Grenade","Grenade"],["Guatemala","Guatemala"],["Guinée","Guinée"],["Guinée équatoriale","Guinée équatoriale"],["Guinée-Bissau","Guinée-Bissau"],["Guyana","Guyana"],["Haïti","Haïti"],["Honduras","Honduras"],["Hongrie","Hongrie"],["Île Maurice","Île Maurice"],["Inde","Inde"],["Indonésie","Indonésie"],["Irak","Irak"],["Iran","Iran"],["Irlande","Irlande"],["Islande","Islande"],["Israël","Israël"],["Italie","Italie"],["Jamaïque","Jamaïque"],["Japon","Japon"],["Jordanie","Jordanie"],["Kazakhstan","Kazakhstan"],["Kenya","Kenya"],["Kirghizistan","Kirghizistan"],["Kiribati","Kiribati"],["Kosovo","Kosovo"],["Koweït","Koweït"],["Laos","Laos"],["Lesotho","Lesotho"],["Lettonie","Lettonie"],["Liban","Liban"],["Liberia","Liberia"],["Libye","Libye"],["Liechtenstein","Liechtenstein"],["Lituanie","Lituanie"],["Luxembourg","Luxembourg"],["Macédoine","Macédoine"],["Madagascar","Madagascar"],["Malaisie","Malaisie"],["Malawi","Malawi"],["Maldives","Maldives"],["Mali","Mali"],["Malte","Malte"],["Maroc","Maroc"],["Marshall","Marshall"],["Mauritanie","Mauritanie"],["Mexique","Mexique"],["Micronésie","Micronésie"],["Moldavie","Moldavie"],["Monaco","Monaco"],["Mongolie","Mongolie"],["Monténégro","Monténégro"],["Namibie","Namibie"],["Nauru","Nauru"],["Népal","Népal"],["Nicaragua","Nicaragua"],["Niger","Niger"],["Nigeria","Nigeria"],["Norvège","Norvège"],["Nouvelle-Zélande","Nouvelle-Zélande"],["Oman","Oman"],["Ouganda","Ouganda"],["Ouzbékistan","Ouzbékistan"],["Pakistan","Pakistan"],["Palaos","Palaos"],["Palestine","Palestine"],["Panama","Panama"],["Papouasie-Nouvelle-Guinée","Papouasie-Nouvelle-Guinée"],["Paraguay","Paraguay"],["Pays-Bas","Pays-Bas"],["Pérou","Pérou"],["Philippines","Philippines"],["Pologne","Pologne"],["Portugal","Portugal"],["Qatar","Qatar"],["République Centrafricaine","République Centrafricaine"],["République Démocratique du Congo","République Démocratique du Congo"],["République Dominicaine","République Dominicaine"],["République Tchèque","République Tchèque"],["Roumanie","Roumanie"],["Royaume-Uni","Royaume-Uni"],["Russie","Russie"],["Rwanda","Rwanda"],["Saint-Kitts-et-Nevis","Saint-Kitts-et-Nevis"],["Saint-Marin","Saint-Marin"],["Saint-Vincent-et-les-Grenadines","Saint-Vincent-et-les-Grenadines"],["Sainte-Lucie","Sainte-Lucie"],["Salomon","Salomon"],
+ 											["Salvador","Salvador"],
+ 						["Samoa","Samoa"],["São Tomé et Príncipe","São Tomé et Príncipe"],["Sénégal","Sénégal"],["Serbie","Serbie"],["Seychelles","Seychelles"],["Sierra Leone","Sierra Leone"],["Singapour","Singapour"],["Slovaquie","Slovaquie"],["Slovénie","Slovénie"],["Somalie","Somalie"],["Soudan","Soudan"],["Soudan du Sud","Soudan du Sud"],["Sri Lanka","Sri Lanka"],["Suède","Suède"],["Suisse","Suisse"],["Suriname","Suriname"],["Swaziland","Swaziland"],["Syrie","Syrie"],["Tadjikistan","Tadjikistan"],["Taïwan","Taïwan"],["Tanzanie","Tanzanie"],["Tchad","Tchad"],["Thaïlande","Thaïlande"],["Timor-Oriental","Timor-Oriental"],["Togo","Togo"],["Tonga","Tonga"],["Trinité-et-Tobago","Trinité-et-Tobago"],["Tunisie","Tunisie"],["Turkménistan","Turkménistan"],["Turquie","Turquie"],["Tuvalu","Tuvalu"],["Ukraine","Ukraine"],["Uruguay","Uruguay"],["Vanuatu","Vanuatu"],["Vatican","Vatican"],["Venezuela","Venezuela"],["Viêt Nam","Viêt Nam"],["Yémen","Yémen"],["Zambie","Zambie"],["Zimbabwe","Zimbabwe"]],
+ 											id: "countries", 
+ 				                            prompt: "Pays", class: "form-control" %>
+ 				                        </div>
+ 				                    </div>
+									<div class="col-md-3 col-sm-6 col-xs-12 search-forms-item">
+									         <%= f.submit "Rechercher", class:"btn btn-info btn-sm center-block" %>
+									 </div>
+									
+                 </div>
+ 				<!-- Fin de la ligne séletion des critères principaux -->
+				
+ 				<!-- Début ligne bouton réinitialisation -->
+ 				<div class="row">
+                     <div class="text-center">
+ 						<%= link_to search_path do %>Réinitialiser
+ 						<%end%>
 					</div>
-					
-					<div class="row">
-                        <div class="col-md-3" id="check-box">
-                            <%= check_box_tag "q[is_trekking_eq]", true %> Treks/Rando
-                        </div>
-                        <div class="col-md-3" id="check-box">
-                            <%= check_box_tag "q[is_trail_eq]", true %> Trail
-                        </div>
-                        <div class="col-md-3" id="check-box">
-                            <%= check_box_tag "q[is_alpinism_eq]", true %> Alpinisme
-                        </div>
-                        <div class="col-md-3" id="check-box">
-                            <%= check_box_tag "q[is_climbing_eq]", true %> Escalade
-                        </div>
-                        <div class="col-md-3" id="check-box">
-                            <%= check_box_tag "q[is_cycling_eq]", true %> Vélo
-                        </div>
-                        <div class="col-md-3" id="check-box">
-                            <%= check_box_tag "q[is_motorbike_eq]", true %> Moto
-                        </div>
-                        <div class="col-md-3"id="check-box">
-                            <%= check_box_tag "q[is_sailing_eq]", true %> Voile
-                        </div>
-                        <div class="col-md-3" id="check-box">
-                            <%= check_box_tag "q[is_camping_eq]", true %> Camping
-                        </div>
-                        <div class="col-md-3" id="check-box">
-                            <%= check_box_tag "q[is_skiing_eq]", true %> Ski
-                        </div>
-                        <div class="col-md-3" id="check-box">
-                            <%= check_box_tag "q[is_fishing_eq]", true %> Pêche
-                        </div>
-                        <div class="col-md-3" id="check-box">
-                            <%= check_box_tag "q[is_mountain_bike_eq]", true %> VTT
-                        </div>
-                        <div class="col-md-3" id="check-box">
-                            <%= check_box_tag "q[is_kayaking_eq]", true %> Kayak
-                        </div>
-                        <div class="col-md-3" id="check-box">
-                            <%= check_box_tag "q[is_diving_eq]", true %> Plongée
-                        </div>
-                        <div class="col-md-3" id="check-box">
-                            <%= check_box_tag "q[is_dog_sledding_eq]", true %> Chien de traîneau
-                        </div>
-                        <div class="col-md-3" id="check-box">
-                            <%= check_box_tag "q[is_horse_riding_eq]", true %> Equitation
-                        </div>
-                        <div class="col-md-3" id="check-box">
-                            <%= check_box_tag "q[is_paragliding_eq]", true %> Parapente
-                        </div>
-                    </div>
-                    
-                    <br>
-                    <br>
-					
-                    
-                    <div class="row">
-                        <%= f.submit "Rechercher", class:"btn btn-info btn-lg center-block" %>
-						</div>
-						<br>
-					<div class="row">
-                        <div class="text-center">
-							<%= link_to search_path do %>Réinitialiser
-							<%end%>
-						</div>
-						</div>	                    
-                    
-                <% end %>
+ 					</div>
+ 				</div>	                    
                 
-                <hr>
-        </section>    
-                
-                
-                <div class="row">
-                    <% if @arrAdventures.empty? %>
-                        Aucune annonce ne correspond à votre recherche.
-                    <% else %>
-					<%= paginate @adventures %>
-                        <% @arrAdventures.each do |adventure| %>
-                        <div class="col-md-3">
-                            <div class="panel panel-default">
-                                <div class="panel-heading preview img-responsive">
-									<% if (adventure.photos.present?) %>
-                                    <%= image_tag adventure.photos[0].image.url(:medium) if adventure.photos.length > 0 %>
-									<%else%>
-									<%= image_tag 'default_adventure_pic.jpeg' %>
-									<%end%>
-                                </div>
-                                <div class="panel-body search-pics">
-                                    <%= image_tag avatar_url(adventure.user), class:"img-circle avatar-small" %>
-                                    <%= link_to adventure.listing_name, adventure %>
-                                </div>
+             <% end %>
+			</div>
+			<!-- FIN PARTIE RECHERCHE -->
+		</div>
+		<!-- FIN PARTIE IMAGE ET RECHERCHE -->
+		<!-- DEBUT PARTIE AFFICHAGE RESULTATS -->
+		<div class="second-part-section-1">
+            <div class="row">
+                <% if @arrAdventures.empty? %>
+                    Aucune annonce ne correspond à votre recherche.
+                <% else %>
+				<%= paginate @adventures %>
+                    <% @arrAdventures.each do |adventure| %>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading preview img-responsive">
+								<% if (adventure.photos.present?) %>
+                                <%= image_tag adventure.photos[0].image.url(:medium) if adventure.photos.length > 0 %>
+								<%else%>
+								<%= image_tag 'default_adventure_pic.jpeg' %>
+								<%end%>
+                            </div>
+                            <div class="panel-body search-pics">
+                                <%= image_tag avatar_url(adventure.user), class:"img-circle avatar-small" %>
+                                <%= link_to adventure.listing_name, adventure %>
                             </div>
                         </div>
-                        <% end %>
+                    </div>
                     <% end %>
-                </div>
-                
+                <% end %>
             </div>
-        </div>
-    </div>
-</div>
+		</div>
+		<!-- FIN PARTIE AFFICHAGE RESULTATS -->
+	</section>
+	<!-- FIN SECTION_1 -->
+	<!-- DEBUT SECTION-2 -->
+	<section class="section-2">
+	  <div class="container">
+		  <h1 class="section-title">le site des aventuriers</h1>
+		  <br />
+		  <hr>
+	  	<div class="row">
+	          <!-- Boxes de Acoes -->
+	      	<div class="col-xs-12 col-sm-6 col-lg-4">
+	  			<div class="box">							
+	  				<div class="icon">
+	  					<div class="image"><i class="fas fa-users"></i></div>
+	  					<div class="info">
+	  						<h3 class="title">Trouvez des équipiers</h3>
+	  						<p>
+								Faites connaître votre prochaine aventure pour trouver des compagnons de route.
+	  						</p>
+	  						<div class="more">
+	  							<a href="#" title="Title Link">
+	  								c'est parti <i class="fa fa-angle-double-right"></i>
+	  							</a>
+	  						</div>
+	  					</div>
+	  				</div>
+	  				<div class="space"></div>
+	  			</div> 
+	  		</div>
+	
+	          <div class="col-xs-12 col-sm-6 col-lg-4">
+	  			<div class="box">							
+	  				<div class="icon">
+	  					<div class="image"><i class="fas fa-search"></i></div>
+	  					<div class="info">
+	  						<h3 class="title">Cherchez une aventure</h3>
+	      					<p>
+								Recherchez votre prochaine aventure parmi les annonces.
+	  						</p>
+	  						<div class="more">
+	  							<a href="#" title="Title Link">
+	  								c'est parti<i class="fa fa-angle-double-right"></i>
+	  							</a>
+	  						</div>
+	  					</div>
+	  				</div>
+	  				<div class="space"></div>
+	  			</div> 
+	  		</div>
+	
+	          <div class="col-xs-12 col-sm-6 col-lg-4">
+	  			<div class="box">							
+	  				<div class="icon">
+	  					<div class="image"><i class="far fa-lightbulb"></i></div>
+	  					<div class="info">
+	  						<h3 class="title">Inspirez-vous</h3>
+	      					<p>
+	  							Des idées de parcours et de projets dans toutes les disciplines, pour tous les niveaux.</p>
+	  						<div class="more">
+	  							<a href="#" title="Title Link">
+	  								c'est parti <i class="fa fa-angle-double-right"></i>
+	  							</a>
+	  						</div>
+	  					</div>
+	  				</div>
+	  				<div class="space"></div>
+	  			</div> 
+	  		</div>		    
+	  		<!-- /Boxes de Acoes -->
+	  	</div>
+	  </div>
+	</section>
+	<!-- FIN SECTION-2 -->
+	<!-- DEBUT SECTION-3 -->
+	<section class="section-3">
+		 <div class="container">
+			 <div class="row section-3-title">
+				 <div class="col-md-9">
+					 <h1>Nos dernières propositions d’aventures</h1>
+					 <br>
+					 <p>Nos utilisateurs n’attendent que vous pour partir à l’aventure, jettez un oeil aux dernières propositions.</p>
+				 </div>
+				 <div class="col-md-3">
+					 <button type="button" class="btn btn-warning">Voir plus</button>
+				 </div>
+			 </div>
 
+		                 <div class="row section-3-selection">
+							 <% Adventure.last(4).each do |p| %>
+		                     <div class="col-lg-3 col-md-6 col-sm-12 box">
+		                         <a class="thumbnail panel-heading preview img-responsive">
+									 <% if (p.photos.present?) %>
+									                     <%= image_tag p.photos[0].image.url(:medium) if p.photos.length > 0 %>
+									 <%else%>
+									 <%= image_tag 'default_adventure_pic.jpeg' %>
+									 <%end%>
+		                         </a>
+		                         <h3 class="adventure-name"><%= p.listing_name %> </h3>
+		                         <p><%= p.main_activity%>
+								 	<br>
+									<%= p.level%>
+									<br>
+									<%= p.duration %>&nbspjours
+									<br>
+									<%= p.address%>
+									<br>
+								 </p>
+								 <br />
+		                         <a> <%= link_to "Découvrir", adventure_path(p), class:"btn btn-primary btn-sm"%></a>
+							
+		                     </div>
+		                     
+							 
+							 <%end%>
+		                 
+						 </div>
+		 
+
+	</section>
+	<!-- FIN SECTION-3 -->
+	<!-- DEBUT SECTION-4 -->
+	<section class="section-4">
+	</section>
+	<!-- FIN SECTION-4 -->
+	<!-- DEBUT SECTION-5 -->
+	<section class="section-5">
+		<div class="container">
+						  <div class="row">
+						  <h1 class="section-title">ils nous soutiennent</h1>
+						  <br />
+						  <hr>
+					  	<div class="row">
+					          <!-- Boxes de Acoes -->
+					      	<div class="col-xs-12 col-sm-6 col-lg-4">
+					  			<div class="box">							
+					  				<div class="icon">
+					  					<%= image_tag 'imago.jpeg', class:"img-thumbnail avatar-large" %>
+					  					<div class="info">
+					  						<h3 class="title">IMAGO</h3>
+					  						<p>
+												Imago, l'incubateur d'aventures, accompagne les néo-aventuriers pour faire éclore leurs projets d’explorations sportives, écologiques et solidaires.</p>
+					  						<div class="more">
+					  							<a href="#" title="Title Link">
+					  								découvrir <i class="fa fa-angle-double-right"></i>
+					  							</a>
+					  						</div>
+					  					</div>
+					  				</div>
+					  				<div class="space"></div>
+					  			</div> 
+					  		</div>
+			
+					          <div class="col-xs-12 col-sm-6 col-lg-4">
+					  			<div class="box">							
+					  				<div class="icon">
+					  					<%= image_tag 'chilowe.png', class:"img-thumbnail avatar-large" %>
+					  					<div class="info">
+					  						<h3 class="title">CHILOWE</h3>
+					      					<p>
+												Chilowé, une newsletter, des évènements et bientôt une série de guides locaux, qui répertorient les meilleures idées de microaventures à vivre autour de chez soi.</p>
+					  						<div class="more">
+					  							<a href="#" title="Title Link">
+					  								découvrir<i class="fa fa-angle-double-right"></i>
+					  							</a>
+					  						</div>
+					  					</div>
+					  				</div>
+					  				<div class="space"></div>
+					  			</div> 
+					  		</div>
+			
+					          <div class="col-xs-12 col-sm-6 col-lg-4">
+					  			<div class="box">							
+					  				<div class="icon">
+					  					<%= image_tag 'explora.png', class:"img-thumbnail avatar-large" %>
+					  					<div class="info">
+					  						<h3 class="title">EXPLORA PROJECT</h3>
+					      					<p>Explora Project est une agence de voyage d’aventure spécialisée dans les expéditions extrêmes sans guide («Self-Guided Extreme Expeditions»).</p>
+					  						<div class="more">
+					  							<a href="#" title="Title Link">
+					  								découvrir <i class="fa fa-angle-double-right"></i>
+					  							</a>
+					  						</div>
+					  					</div>
+					  				</div>
+					  				<div class="space"></div>
+					  			</div> 
+					  		</div>		    
+					  		<!-- /Boxes de Acoes -->
+					  	</div>
+					</div>
+				</div>
+	</section>
+	<!-- FIN SECTION-5 -->
+</div>
+<!-- FIN PAGE -->
 
 <script>
     $(function() {
