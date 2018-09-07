@@ -43,8 +43,40 @@ ActiveRecord::Schema.define(version: 2018_07_23_161835) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-# Could not dump table "adventures" because of following StandardError
-#   Unknown type 'stringt' for column 'listing_name'
+  create_table "adventures", force: :cascade do |t|
+    t.string "main_activity"
+    t.text "summary"
+    t.string "address"
+    t.integer "number_of_teammates"
+    t.date "date_of_departure"
+    t.integer "duration"
+    t.boolean "is_trekking"
+    t.boolean "is_trail"
+    t.boolean "is_alpinism"
+    t.boolean "is_climbing"
+    t.boolean "is_cycling"
+    t.boolean "is_motorbike"
+    t.boolean "is_sailing"
+    t.boolean "is_camping"
+    t.boolean "is_skiing"
+    t.boolean "is_fishing"
+    t.string "is_mountain_bike"
+    t.boolean "is_kayaking"
+    t.boolean "is_diving"
+    t.boolean "is_dog_sledding"
+    t.boolean "is_horse_riding"
+    t.boolean "is_paragliding"
+    t.boolean "active"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "listing_name"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "level"
+    t.string "countries"
+    t.index ["user_id"], name: "index_adventures_on_user_id"
+  end
 
   create_table "conversations", force: :cascade do |t|
     t.integer "sender_id"
